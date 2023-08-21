@@ -6,11 +6,11 @@ import { AntDesign } from "@expo/vector-icons";
 import { Fontisto } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Octicons } from "@expo/vector-icons";
-
+import { Feather } from "@expo/vector-icons";
 const Posts = () => {
   function renderPost({ item }) {
     return (
-      <View>
+      <View style={styles.container}>
         {/* Post Header section */}
         <View style={styles.postHeader}>
           <View style={styles.postUser}>
@@ -30,12 +30,21 @@ const Posts = () => {
           {/* Group of 3 */}
           <View style={styles.postIcons}>
             <AntDesign name="hearto" size={25} color="black" />
-            <Fontisto name="comment" size={24} color="black" />
+            <Feather
+              name="message-circle"
+              size={25}
+              color="black"
+              style={styles.sendMessage}
+            />
             <FontAwesome5 name="telegram-plane" size={24} color="black" />
           </View>
 
           {/* Bookmark */}
-          <Octicons name="bookmark" size={24} color="black" />
+          <Octicons name="bookmark" size={28} color="black" />
+        </View>
+        {/* likes */}
+        <View style={styles.postLikes}>
+          <Text>{item.likes} likes</Text>
         </View>
       </View>
     );
@@ -53,6 +62,9 @@ const Posts = () => {
 export default Posts;
 
 const styles = StyleSheet.create({
+  container: {
+    marginBottom: 14,
+  },
   postProfile: {
     height: 50,
     width: 50,
@@ -88,6 +100,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginHorizontal: 12,
-    marginBottom: 12,
+  },
+  postLikes: {
+    marginHorizontal: 12,
+  },
+  sendMessage: {
+    transform: [{ rotateY: "180deg" }],
   },
 });
