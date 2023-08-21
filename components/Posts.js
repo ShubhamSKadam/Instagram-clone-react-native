@@ -2,6 +2,10 @@ import { FlatList, StyleSheet, Text, View, Image } from "react-native";
 import { dummyData } from "../dummyData";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
+import { Fontisto } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
+import { Octicons } from "@expo/vector-icons";
 
 const Posts = () => {
   function renderPost({ item }) {
@@ -19,6 +23,19 @@ const Posts = () => {
         {/* Post Image */}
         <View style={styles.postImageContainer}>
           <Image source={item.profileImage} style={styles.postImage} />
+        </View>
+
+        {/* Post Bottom section */}
+        <View style={styles.postBottom}>
+          {/* Group of 3 */}
+          <View style={styles.postIcons}>
+            <AntDesign name="hearto" size={25} color="black" />
+            <Fontisto name="comment" size={24} color="black" />
+            <FontAwesome5 name="telegram-plane" size={24} color="black" />
+          </View>
+
+          {/* Bookmark */}
+          <Octicons name="bookmark" size={24} color="black" />
         </View>
       </View>
     );
@@ -61,5 +78,16 @@ const styles = StyleSheet.create({
   },
   postImageContainer: {
     marginVertical: 10,
+  },
+  postIcons: {
+    flexDirection: "row",
+    width: "25%",
+    justifyContent: "space-between",
+  },
+  postBottom: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginHorizontal: 12,
+    marginBottom: 12,
   },
 });
