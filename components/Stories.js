@@ -1,21 +1,41 @@
-import { FlatList, StyleSheet, Text, View, Image } from "react-native";
-import React from "react";
-import { dummyData } from "../dummyData";
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+} from "react-native";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { usersSlice } from "../store/usersSlice";
 
 const Stories = () => {
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.users.dummyData);
+
   function renderStories({ item }) {
+    function storiesTapHandler() {
+      dispatch(usersSlice.actions.setSelectedUser(item.id));
+      dispatch(usersSlice.actions.tapStory(item.id));
+      console.log(data);
+    }
+
     return (
-      <View style={styles.container}>
-        <Image source={item.profileImage} style={styles.profileImg} />
+      <TouchableOpacity style={styles.container} onPress={storiesTapHandler}>
+        <Image
+          source={item.profileImage}
+          style={[styles.profileImg, item.storyTapped && styles.tappedImg]}
+        />
         <Text style={styles.profileText}>{item.name}</Text>
-      </View>
+      </TouchableOpacity>
     );
   }
 
   return (
     <View>
       <FlatList
-        data={dummyData}
+        data={data}
         renderItem={renderStories}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
@@ -44,5 +64,8 @@ const styles = StyleSheet.create({
     marginTop: 4,
     fontWeight: "300",
     fontSize: 12,
+  },
+  tappedImg: {
+    borderColor: "#f1f1f1",
   },
 });

@@ -69,6 +69,8 @@ const styles = StyleSheet.create({
     height: 50,
     width: 50,
     borderRadius: 50,
+    borderWidth: 2,
+    borderColor: "#E384FF",
   },
   postHeader: {
     flexDirection: "row",
