@@ -1,7 +1,7 @@
 export const dummyData = [
   {
     id: 0,
-    name: "Myself",
+    name: "ssk.exe",
     profileImage: require("./assets/ProfileImages/shubham.png"),
   },
   {

@@ -13,12 +13,14 @@ const Stories = () => {
   }
 
   return (
-    <FlatList
-      data={dummyData}
-      renderItem={renderStories}
-      horizontal={true}
-      showsHorizontalScrollIndicator={false}
-    />
+    <View>
+      <FlatList
+        data={dummyData}
+        renderItem={renderStories}
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+      />
+    </View>
   );
 };
 
@@ -27,7 +29,8 @@ export default Stories;
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 10,
-    paddingVertical: 20,
+    paddingTop: 15,
+    paddingBottom: 10,
     alignItems: "center",
   },
   profileImg: {
@@ -38,8 +41,8 @@ const styles = StyleSheet.create({
     borderColor: "#E384FF",
   },
   profileText: {
-    marginVertical: 4,
+    marginTop: 4,
     fontWeight: "300",
-    fontSize: 14,
+    fontSize: 12,
   },
 });
