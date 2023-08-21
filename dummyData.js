@@ -6,42 +6,42 @@ export const dummyData = [
   },
   {
     id: 1,
-    name: "aditya",
+    name: "Aditya",
     profileImage: require("./assets/ProfileImages/aditya.png"),
   },
   {
     id: 2,
-    name: "amlan",
+    name: "Amlan",
     profileImage: require("./assets/ProfileImages/amlan.png"),
   },
   {
     id: 3,
-    name: "adyasar",
+    name: "Adyasar",
     profileImage: require("./assets/ProfileImages/adyasar.png"),
   },
   {
     id: 4,
-    name: "gauri",
+    name: "Gauri",
     profileImage: require("./assets/ProfileImages/gauri.png"),
   },
   {
     id: 5,
-    name: "prakhar",
+    name: "Prakhar",
     profileImage: require("./assets/ProfileImages/prakhar.png"),
   },
   {
     id: 6,
-    name: "pratiksha",
+    name: "Pratiksha",
     profileImage: require("./assets/ProfileImages/pratiksha.png"),
   },
   {
     id: 7,
-    name: "preeti",
+    name: "Preeti",
     profileImage: require("./assets/ProfileImages/preeti.png"),
   },
   {
     id: 8,
-    name: "rishabh",
+    name: "Rishabh",
     profileImage: require("./assets/ProfileImages/rishabh.png"),
   },
 ];
