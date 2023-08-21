@@ -31,14 +31,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   profileImg: {
-    height: 70,
-    width: 70,
-    borderRadius: 70,
-    borderWidth: 1,
-    borderColor:''
+    height: 85,
+    width: 85,
+    borderRadius: 85,
+    borderWidth: 2,
+    borderColor: "#E384FF",
   },
   profileText: {
     marginVertical: 4,
-    fontWeight: "500",
+    fontWeight: "300",
+    fontSize: 14,
   },
 });
