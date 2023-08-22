@@ -21,4 +21,15 @@ export const postData = [
       likes: 1500,
     },
   },
+  {
+    userId: 2,
+    post: {
+      postImage: require("./assets/PostImages/amlan.jpg"),
+      likes: 1210,
+    },
+    reel: {
+      reelVideo: "",
+      likes: 1500,
+    },
+  },
 ];

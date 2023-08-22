@@ -17,12 +17,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { usersSlice } from "../store/usersSlice";
 
 const Posts = () => {
-  const data = useSelector((state) => state.users.dummyData);
+  const userData = useSelector((state) => state.users.dummyData);
+  const postData = useSelector((state) => state.posts.postData);
+
   const dispatch = useDispatch();
+
   function renderPost({ item }) {
     function profileImagePressHandler() {
       dispatch(usersSlice.actions.tapStory(item.id));
     }
+
+    // finding the user to which the post belongs
+    const postUserIndex = userData.findIndex((user) => user.id === item.userId);
+    const postUser = userData[postUserIndex];
+
     return (
       <View style={styles.container}>
         {/* Post Header section */}
@@ -32,19 +40,22 @@ const Posts = () => {
               onPress={profileImagePressHandler}
               style={[
                 styles.postProfileImageContainer,
-                item.storyTapped && styles.tappedProfileImageContainer,
+                postUser.storyTapped && styles.tappedProfileImageContainer,
               ]}
             >
-              <Image source={item.profileImage} style={styles.postProfile} />
+              <Image
+                source={postUser.profileImage}
+                style={styles.postProfile}
+              />
             </TouchableOpacity>
-            <Text style={styles.postUserText}>{item.name}</Text>
+            <Text style={styles.postUserText}>{postUser.name}</Text>
           </View>
           <Ionicons name="ellipsis-vertical" size={24} color="black" />
         </View>
 
         {/* Post Image */}
         <View style={styles.postImageContainer}>
-          <Image source={item.profileImage} style={styles.postImage} />
+          <Image source={item.post.postImage} style={styles.postImage} />
         </View>
 
         {/* Post Bottom section */}
@@ -66,7 +77,7 @@ const Posts = () => {
         </View>
         {/* likes */}
         <View style={styles.postLikes}>
-          <Text>{item.likes} likes</Text>
+          <Text>{item.post.likes} likes</Text>
         </View>
       </View>
     );
@@ -74,7 +85,7 @@ const Posts = () => {
 
   return (
     <FlatList
-      data={data}
+      data={postData}
       renderItem={renderPost}
       showsVerticalScrollIndicator={false}
     />
