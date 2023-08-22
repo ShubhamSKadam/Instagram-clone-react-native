@@ -5,6 +5,7 @@ import ProfileView from "../components/ProfileView";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CustomizeProfile from "../components/CustomizeProfile";
 import StoryHighlights from "../components/StoryHighlights";
+import ProfilePosts from "../components/ProfilePosts";
 
 const ProfileScreen = () => {
   return (
@@ -14,9 +15,10 @@ const ProfileScreen = () => {
 
       {/* Edit and share profile */}
       <CustomizeProfile />
-      
+
       {/* Story Highlights */}
-    <StoryHighlights/>
+      <StoryHighlights />
+      <ProfilePosts />
     </SafeAreaView>
   );
 };
