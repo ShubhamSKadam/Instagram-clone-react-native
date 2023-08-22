@@ -28,7 +28,7 @@ const Posts = () => {
       dispatch(usersSlice.actions.tapStory(id));
     }
 
-    // finding the user to which the post belongs
+    // finding the user to which the post belongs to
     const postUserIndex = userData.findIndex((user) => user.id === item.userId);
     const postUser = userData[postUserIndex];
 

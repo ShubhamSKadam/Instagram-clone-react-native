@@ -22,9 +22,9 @@ const CustomizeProfile = () => {
       </TouchableOpacity>
 
       {/* Discover profile */}
-      <View style={styles.discover}>
+      <TouchableOpacity style={styles.discover}>
         <Ionicons name="ios-person-add-outline" size={20} color="black" />
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };

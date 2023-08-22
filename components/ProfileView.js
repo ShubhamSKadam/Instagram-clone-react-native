@@ -1,7 +1,11 @@
 import { StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
+import { useSelector } from "react-redux";
 
 const ProfileView = () => {
+  const userData = useSelector((state) => state.users.dummyData);
+  const myData = userData.filter((user) => user.id === 0);
+
   return (
     <View style={styles.container}>
       <View style={styles.profileContainer}>
@@ -16,7 +20,7 @@ const ProfileView = () => {
         <View style={styles.followerCount}>
           {/* posts */}
           <View style={styles.stats}>
-            <Text style={styles.statsNumber}>0</Text>
+            <Text style={styles.statsNumber}>5</Text>
             <Text style={styles.statsText}>Posts</Text>
           </View>
 
@@ -28,7 +32,7 @@ const ProfileView = () => {
 
           {/* Following */}
           <View style={styles.stats}>
-            <Text style={styles.statsNumber}>5</Text>
+            <Text style={styles.statsNumber}>512</Text>
             <Text style={styles.statsText}>Following</Text>
           </View>
         </View>

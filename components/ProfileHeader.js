@@ -28,35 +28,36 @@ const ProfileHeader = () => {
           <Feather name="menu" size={28} color="black" />
         </View>
       </View>
+
+      {/* Modal Component */}
       <Modal
         isVisible={isModalVisible}
         testID={"modal"}
-        swipeDirection={["up", "left", "right", "down"]}
         onBackdropPress={() => setModalVisible(false)}
-        style={styles.modalContainer}
+        style={styles.modal}
       >
-        <View style={styles.modalMainContainer}>
-          <View style={styles.modalUser}>
-            <Image
-              source={require("../assets/ProfileImages/shubham.png")}
-              style={styles.modalProfileImage}
-            />
-            <Text>ssk.exe</Text>
-          </View>
-
-          {/* Active account */}
-          <Fontisto name="radio-btn-active" size={24} color="#63bbdd" />
-        </View>
-
-        {/* Add Account */}
-        <View style={styles.addAccount}>
-          <View style={styles.addHighlightContainer}>
-            <View style={styles.addHighlight}>
-              <Ionicons name="add" size={32} color="black" />
+          <View style={styles.modalMainContainer}>
+            <View style={styles.modalUser}>
+              <Image
+                source={require("../assets/ProfileImages/shubham.png")}
+                style={styles.modalProfileImage}
+              />
+              <Text>ssk.exe</Text>
             </View>
+
+            {/* Active account */}
+            <Fontisto name="radio-btn-active" size={24} color="#63bbdd" />
           </View>
-          <Text>Add account</Text>
-        </View>
+
+          {/* Add Account */}
+          <View style={styles.addAccount}>
+            <View style={styles.addHighlightContainer}>
+              <View style={styles.addHighlight}>
+                <Ionicons name="add" size={32} color="black" />
+              </View>
+            </View>
+            <Text>Add account</Text>
+          </View>
       </Modal>
     </View>
   );
@@ -85,7 +86,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "500",
   },
-  modalContainer: {
+  modal: {
     justifyContent: "flex-end",
     margin: 0,
   },

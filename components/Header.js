@@ -6,13 +6,11 @@ import React from "react";
 const Header = () => {
   return (
     <View style={styles.container}>
-      <View>
-        {/* <Text style={styles.headerText}>Instagram</Text> */}
-        <Image
-          source={require("../assets/Insta.png")}
-          style={styles.headerLogo}
-        />
-      </View>
+      {/* Instagram Title */}
+      <Image
+        source={require("../assets/Insta.png")}
+        style={styles.headerLogo}
+      />
 
       <View style={styles.logoContainer}>
         <AntDesign name="hearto" size={25} color="black" />
