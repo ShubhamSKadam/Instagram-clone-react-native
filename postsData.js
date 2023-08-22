@@ -8,7 +8,7 @@ export const postData = [
       isLiked: false,
     },
     reel: {
-      reelId : 1, 
+      reelId: 1,
       reelVideo: "",
       likes: 1500,
     },
@@ -18,11 +18,11 @@ export const postData = [
     post: {
       postId: 2,
       postImage: require("./assets/PostImages/aditya.jpg"),
-      likes: 1210,
+      likes: 840,
       isLiked: false,
     },
     reel: {
-      reelId : 2, 
+      reelId: 2,
       reelVideo: "",
       likes: 1500,
     },
@@ -32,11 +32,11 @@ export const postData = [
     post: {
       postId: 3,
       postImage: require("./assets/PostImages/amlan.jpg"),
-      likes: 1210,
+      likes: 340,
       isLiked: false,
     },
     reel: {
-      reelId : 3, 
+      reelId: 3,
       reelVideo: "",
       likes: 1500,
     },

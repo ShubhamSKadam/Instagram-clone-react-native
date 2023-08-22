@@ -62,7 +62,6 @@ const styles = StyleSheet.create({
     height: 85,
     width: 85,
     borderRadius: 85,
-    // borderColor: "#E384FF",
   },
   profileText: {
     marginTop: 4,
@@ -71,7 +70,7 @@ const styles = StyleSheet.create({
   },
   tappedImg: {
     padding: 2,
-    borderColor: "#f1f1f1",
+    borderColor: "#c4c3c3",
     borderWidth: 2,
   },
 });
