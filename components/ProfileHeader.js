@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import React from "react";
 import { FontAwesome } from "@expo/vector-icons";
@@ -9,10 +9,10 @@ const ProfileHeader = () => {
     <View>
       <View style={styles.container}>
         {/* name and modal */}
-        <View style={styles.profileUsername}>
+        <TouchableOpacity style={styles.profileUsername}>
           <Text style={styles.profileText}>ssk.exe</Text>
           <Entypo name="chevron-down" size={24} color="black" />
-        </View>
+        </TouchableOpacity>
 
         <View style={styles.createAdd}>
           <FontAwesome name="plus-square-o" size={28} color="black" />

@@ -8,9 +8,11 @@ import PostScreen from "./screens/PostScreen";
 import ReelScreen from "./screens/ReelScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import { Entypo } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { Octicons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Provider } from "react-redux";
 import { store } from "./store";
 
@@ -26,8 +28,12 @@ export default function App() {
             name="home"
             component={HomeScreen}
             options={{
-              tabBarIcon: ({ color, size }) => (
-                <Entypo name="home" size={28} color="black" />
+              tabBarIcon: ({ color, size, focused }) => (
+                <Ionicons
+                  name={focused ? "home" : "home-outline"}
+                  size={28}
+                  color="black"
+                />
               ),
             }}
           ></Tab.Screen>
@@ -35,8 +41,8 @@ export default function App() {
             name="search"
             component={SearchScreen}
             options={{
-              tabBarIcon: ({ color, size }) => (
-                <AntDesign name="search1" size={28} color="black" />
+              tabBarIcon: ({ color, size, focused }) => (
+                <AntDesign name="search1" size={28} color={"black"} />
               ),
             }}
           ></Tab.Screen>
@@ -54,7 +60,11 @@ export default function App() {
             component={ReelScreen}
             options={{
               tabBarIcon: ({ color, size }) => (
-                <Entypo name="folder-video" size={28} color="black" />
+                <MaterialCommunityIcons
+                  name="play-box-outline"
+                  size={28}
+                  color="black"
+                />
               ),
             }}
           ></Tab.Screen>
@@ -62,8 +72,12 @@ export default function App() {
             name="profile"
             component={ProfileScreen}
             options={{
-              tabBarIcon: ({ color, size }) => (
-                <FontAwesome name="user" size={28} color="black" />
+              tabBarIcon: ({ color, size, focused }) => (
+                <FontAwesome
+                  name={focused ? "user" : "user-o"}
+                  size={28}
+                  color="black"
+                />
               ),
             }}
           ></Tab.Screen>
