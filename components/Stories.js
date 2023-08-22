@@ -16,17 +16,16 @@ const Stories = () => {
 
   function renderStories({ item }) {
     function storiesTapHandler() {
-      dispatch(usersSlice.actions.setSelectedUser(item.id));
       dispatch(usersSlice.actions.tapStory(item.id));
-      console.log(data);
     }
 
     return (
       <TouchableOpacity style={styles.container} onPress={storiesTapHandler}>
-        <Image
-          source={item.profileImage}
-          style={[styles.profileImg, item.storyTapped && styles.tappedImg]}
-        />
+        <View
+          style={[styles.imageContainer, item.storyTapped && styles.tappedImg]}
+        >
+          <Image source={item.profileImage} style={styles.profileImg} />
+        </View>
         <Text style={styles.profileText}>{item.name}</Text>
       </TouchableOpacity>
     );
@@ -53,12 +52,17 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     alignItems: "center",
   },
+  imageContainer: {
+    borderColor: "red",
+    borderWidth: 2,
+    borderRadius: 50,
+    padding: 2,
+  },
   profileImg: {
     height: 85,
     width: 85,
     borderRadius: 85,
-    borderWidth: 2,
-    borderColor: "#E384FF",
+    // borderColor: "#E384FF",
   },
   profileText: {
     marginTop: 4,
@@ -66,6 +70,8 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   tappedImg: {
+    padding: 2,
     borderColor: "#f1f1f1",
+    borderWidth: 2,
   },
 });
