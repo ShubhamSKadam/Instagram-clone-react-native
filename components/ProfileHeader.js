@@ -1,15 +1,24 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
 import { Entypo } from "@expo/vector-icons";
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
+import Modal from "react-native-modal";
+import { Fontisto } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 
 const ProfileHeader = () => {
+  const [isModalVisible, setModalVisible] = useState(false);
+
+  function modalHandler() {
+    setModalVisible(!isModalVisible);
+  }
+
   return (
     <View>
       <View style={styles.container}>
         {/* name and modal */}
-        <TouchableOpacity style={styles.profileUsername}>
+        <TouchableOpacity style={styles.profileUsername} onPress={modalHandler}>
           <Text style={styles.profileText}>ssk.exe</Text>
           <Entypo name="chevron-down" size={24} color="black" />
         </TouchableOpacity>
@@ -19,6 +28,36 @@ const ProfileHeader = () => {
           <Feather name="menu" size={28} color="black" />
         </View>
       </View>
+      <Modal
+        isVisible={isModalVisible}
+        testID={"modal"}
+        swipeDirection={["up", "left", "right", "down"]}
+        onBackdropPress={() => setModalVisible(false)}
+        style={styles.modalContainer}
+      >
+        <View style={styles.modalMainContainer}>
+          <View style={styles.modalUser}>
+            <Image
+              source={require("../assets/ProfileImages/shubham.png")}
+              style={styles.modalProfileImage}
+            />
+            <Text>ssk.exe</Text>
+          </View>
+
+          {/* Active account */}
+          <Fontisto name="radio-btn-active" size={24} color="#63bbdd" />
+        </View>
+
+        {/* Add Account */}
+        <View style={styles.addAccount}>
+          <View style={styles.addHighlightContainer}>
+            <View style={styles.addHighlight}>
+              <Ionicons name="add" size={32} color="black" />
+            </View>
+          </View>
+          <Text>Add account</Text>
+        </View>
+      </Modal>
     </View>
   );
 };
@@ -45,5 +84,46 @@ const styles = StyleSheet.create({
   profileText: {
     fontSize: 20,
     fontWeight: "500",
+  },
+  modalContainer: {
+    justifyContent: "flex-end",
+    margin: 0,
+  },
+  modalProfileImage: {
+    height: 60,
+    width: 60,
+    borderRadius: 60,
+    marginRight: 18,
+  },
+  modalUser: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  modalMainContainer: {
+    backgroundColor: "white",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 18,
+    paddingVertical: 18,
+    paddingTop: 45,
+  },
+  addHighlight: {
+    borderWidth: 1,
+    height: 60,
+    width: 60,
+    borderRadius: 60,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  addHighlightContainer: {
+    width: "20%",
+  },
+  addAccount: {
+    backgroundColor: "white",
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 18,
+    paddingBottom: 22,
   },
 });
