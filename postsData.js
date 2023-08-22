@@ -41,4 +41,60 @@ export const postData = [
       likes: 1500,
     },
   },
+  {
+    userId: 0,
+    post: {
+      postId: 4,
+      postImage: require("./assets/PostImages/prakhar.jpg"),
+      likes: 340,
+      isLiked: false,
+    },
+    reel: {
+      reelId: 3,
+      reelVideo: "",
+      likes: 1500,
+    },
+  },
+  {
+    userId: 0,
+    post: {
+      postId: 3,
+      postImage: require("./assets/PostImages/preeti.jpg"),
+      likes: 340,
+      isLiked: false,
+    },
+    reel: {
+      reelId: 3,
+      reelVideo: "",
+      likes: 1500,
+    },
+  },
+  {
+    userId: 0,
+    post: {
+      postId: 3,
+      postImage: require("./assets/PostImages/pratiksha.jpg"),
+      likes: 340,
+      isLiked: false,
+    },
+    reel: {
+      reelId: 3,
+      reelVideo: "",
+      likes: 1500,
+    },
+  },
+  {
+    userId: 0,
+    post: {
+      postId: 3,
+      postImage: require("./assets/PostImages/adyasar.jpg"),
+      likes: 340,
+      isLiked: false,
+    },
+    reel: {
+      reelId: 3,
+      reelVideo: "",
+      likes: 1500,
+    },
+  },
 ];

@@ -6,6 +6,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import CustomizeProfile from "../components/CustomizeProfile";
 import StoryHighlights from "../components/StoryHighlights";
 import ProfilePosts from "../components/ProfilePosts";
+import ProfilePostImages from "../components/ProfilePostImages";
 
 const ProfileScreen = () => {
   return (
@@ -18,7 +19,11 @@ const ProfileScreen = () => {
 
       {/* Story Highlights */}
       <StoryHighlights />
+
+      {/*  Profile Post Header*/}
       <ProfilePosts />
+
+      <ProfilePostImages />
     </SafeAreaView>
   );
 };
