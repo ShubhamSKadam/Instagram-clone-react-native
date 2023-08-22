@@ -23,8 +23,8 @@ const Posts = () => {
   const dispatch = useDispatch();
 
   function renderPost({ item }) {
-    function profileImagePressHandler() {
-      dispatch(usersSlice.actions.tapStory(item.id));
+    function profileImagePressHandler(id) {
+      dispatch(usersSlice.actions.tapStory(id));
     }
 
     // finding the user to which the post belongs
@@ -37,7 +37,7 @@ const Posts = () => {
         <View style={styles.postHeader}>
           <View style={styles.postUser}>
             <TouchableOpacity
-              onPress={profileImagePressHandler}
+              onPress={() => profileImagePressHandler(postUser.id)}
               style={[
                 styles.postProfileImageContainer,
                 postUser.storyTapped && styles.tappedProfileImageContainer,

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Image, View } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import React from "react";
@@ -7,7 +7,11 @@ const Header = () => {
   return (
     <View style={styles.container}>
       <View>
-        <Text style={styles.headerText}>Instagram</Text>
+        {/* <Text style={styles.headerText}>Instagram</Text> */}
+        <Image
+          source={require("../assets/Insta.png")}
+          style={styles.headerLogo}
+        />
       </View>
 
       <View style={styles.logoContainer}>
@@ -31,8 +35,8 @@ const styles = StyleSheet.create({
     width: "20%",
     justifyContent: "space-around",
   },
-  headerText: {
-    fontFamily: "American Typewriter",
-    fontSize: 20,
+  headerLogo: {
+    height: 45,
+    width:120,
   },
 });
