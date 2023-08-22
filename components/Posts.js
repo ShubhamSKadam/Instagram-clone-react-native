@@ -1,5 +1,11 @@
-import { FlatList, StyleSheet, Text, View, Image } from "react-native";
-import { dummyData } from "../dummyData";
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+} from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
@@ -7,14 +13,30 @@ import { Fontisto } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Octicons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
+import { useDispatch, useSelector } from "react-redux";
+import { usersSlice } from "../store/usersSlice";
+
 const Posts = () => {
+  const data = useSelector((state) => state.users.dummyData);
+  const dispatch = useDispatch();
   function renderPost({ item }) {
+    function profileImagePressHandler() {
+      dispatch(usersSlice.actions.tapStory(item.id));
+    }
     return (
       <View style={styles.container}>
         {/* Post Header section */}
         <View style={styles.postHeader}>
           <View style={styles.postUser}>
-            <Image source={item.profileImage} style={styles.postProfile} />
+            <TouchableOpacity
+              onPress={profileImagePressHandler}
+              style={[
+                styles.postProfileImageContainer,
+                item.storyTapped && styles.tappedProfileImageContainer,
+              ]}
+            >
+              <Image source={item.profileImage} style={styles.postProfile} />
+            </TouchableOpacity>
             <Text style={styles.postUserText}>{item.name}</Text>
           </View>
           <Ionicons name="ellipsis-vertical" size={24} color="black" />
@@ -52,7 +74,7 @@ const Posts = () => {
 
   return (
     <FlatList
-      data={dummyData}
+      data={data}
       renderItem={renderPost}
       showsVerticalScrollIndicator={false}
     />
@@ -69,8 +91,18 @@ const styles = StyleSheet.create({
     height: 50,
     width: 50,
     borderRadius: 50,
+  },
+  postProfileImageContainer: {
     borderWidth: 2,
-    borderColor: "#E384FF",
+    borderRadius: 50,
+    padding: 2,
+    borderColor: "red",
+  },
+  tappedProfileImageContainer: {
+    borderWidth: 2,
+    borderColor: "#f1f1f1",
+    padding: 2,
+    borderRadius: 50,
   },
   postHeader: {
     flexDirection: "row",
