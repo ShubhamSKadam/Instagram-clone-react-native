@@ -68,7 +68,11 @@ const Posts = () => {
           {/* Group of 3 */}
           <View style={styles.postIcons}>
             <TouchableOpacity onPress={likePressHandler}>
-              <AntDesign name="hearto" size={25} color="black" />
+              <AntDesign
+                name={item.post.isLiked ? "heart" : "hearto"}
+                size={25}
+                color={item.post.isLiked ? "red" : "black"}
+              />
             </TouchableOpacity>
             <Feather
               name="message-circle"
