@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 50,
     padding: 2,
-    borderColor: "red",
+    borderColor: "#e975f1",
   },
   tappedProfileImageContainer: {
     borderWidth: 2,

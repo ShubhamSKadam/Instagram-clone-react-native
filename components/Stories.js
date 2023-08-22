@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   imageContainer: {
-    borderColor: "red",
+    borderColor: "#e975f1",
     borderWidth: 2,
     borderRadius: 50,
     padding: 2,
