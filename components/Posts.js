@@ -15,6 +15,7 @@ import { Octicons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { usersSlice } from "../store/usersSlice";
+import { postSlice } from "../store/postSlice";
 
 const Posts = () => {
   const userData = useSelector((state) => state.users.dummyData);
@@ -30,6 +31,10 @@ const Posts = () => {
     // finding the user to which the post belongs
     const postUserIndex = userData.findIndex((user) => user.id === item.userId);
     const postUser = userData[postUserIndex];
+
+    function likePressHandler() {
+      dispatch(postSlice.actions.setLiked(item.post.postId));
+    }
 
     return (
       <View style={styles.container}>
@@ -62,7 +67,9 @@ const Posts = () => {
         <View style={styles.postBottom}>
           {/* Group of 3 */}
           <View style={styles.postIcons}>
-            <AntDesign name="hearto" size={25} color="black" />
+            <TouchableOpacity onPress={likePressHandler}>
+              <AntDesign name="hearto" size={25} color="black" />
+            </TouchableOpacity>
             <Feather
               name="message-circle"
               size={25}
