@@ -16,7 +16,7 @@ const ProfilePostImages = () => {
   }
 
   return (
-    <View>
+    <View style={styles.container}>
       <FlatList data={myPosts} renderItem={renderPostImages} numColumns={3} />
     </View>
   );

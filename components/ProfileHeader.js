@@ -107,6 +107,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 18,
     paddingVertical: 18,
     paddingTop: 45,
+    borderTopLeftRadius: 14,
+    borderTopRightRadius: 14,
   },
   addHighlight: {
     borderWidth: 1,
