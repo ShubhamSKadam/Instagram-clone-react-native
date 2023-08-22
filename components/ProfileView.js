@@ -1,21 +1,36 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { usersSlice } from "../store/usersSlice";
 
 const ProfileView = () => {
+  const dispatch = useDispatch();
   const userData = useSelector((state) => state.users.dummyData);
   const myData = userData.filter((user) => user.id === 0);
+
+  console.log(myData[0].storyTapped);
+
+  function tapImageStoryHandler() {
+    dispatch(usersSlice.actions.tapStory(myData[0].id));
+  }
 
   return (
     <View style={styles.container}>
       <View style={styles.profileContainer}>
         {/* Profile Pic */}
-        <View style={styles.profileImgContainer}>
-          <Image
-            source={require("../assets/ProfileImages/shubham.png")}
-            style={styles.profileImage}
-          />
-        </View>
+        <TouchableOpacity onPress={tapImageStoryHandler}>
+          <View
+            style={[
+              styles.profileImgContainer,
+              myData[0].storyTapped && styles.tappedProfileImg,
+            ]}
+          >
+            <Image
+              source={require("../assets/ProfileImages/shubham.png")}
+              style={styles.profileImage}
+            />
+          </View>
+        </TouchableOpacity>
 
         <View style={styles.followerCount}>
           {/* posts */}
@@ -64,6 +79,17 @@ const styles = StyleSheet.create({
     height: 80,
     width: 80,
     borderRadius: 160,
+  },
+  profileImgContainer: {
+    borderWidth: 2,
+    borderRadius: 50,
+    borderColor: "#e975f1",
+    padding: 2,
+  },
+  tappedProfileImg: {
+    borderColor: "#c4c3c3",
+    padding: 2,
+    borderWidth: 2,
   },
   followerCount: {
     flexDirection: "row",
