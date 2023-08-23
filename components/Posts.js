@@ -109,75 +109,66 @@ const Posts = () => {
         <View style={styles.postLikes}>
           <Text>{item.post.likes} likes</Text>
         </View>
-
-        {/* Modal on Tapping the Nav bar of each post */}
-        <Modal
-          isVisible={isModalVisible}
-          testID={"modal"}
-          onBackdropPress={() => setModalVisible(false)}
-          style={styles.modal}
-        >
-          <View style={styles.modalContainer}>
-            <View style={styles.modalTopContainer}>
-              <TouchableOpacity onPress={saveBookMarkHandler}>
-                <MaterialIcons
-                  name={item.post.isBookmarked ? "bookmark" : "bookmark-border"}
-                  size={32}
-                  color="black"
-                />
-              </TouchableOpacity>
-              <AntDesign name="qrcode" size={32} color="black" />
-            </View>
-
-            <View style={styles.modalListContainer}>
-              <View style={styles.modalListItem}>
-                <AntDesign name="staro" size={24} color="black" />
-                <Text style={styles.modalListItemText}>Add to favorites</Text>
-              </View>
-              <View style={styles.modalListItem}>
-                <Ionicons
-                  name="person-remove-outline"
-                  size={24}
-                  color="black"
-                />
-                <Text style={styles.modalListItemText}>Unfollow</Text>
-              </View>
-
-              <View style={styles.modalListItem}>
-                <Ionicons
-                  name="information-circle-outline"
-                  size={24}
-                  color="black"
-                />
-                <Text style={styles.modalListItemText}>
-                  Why you're seeing this post
-                </Text>
-              </View>
-              <View style={styles.modalListItem}>
-                <Feather name="eye-off" size={24} color="black" />
-                <Text style={styles.modalListItemText}>Hide</Text>
-              </View>
-              <View style={styles.modalListItem}>
-                <FontAwesome name="user-o" size={24} color="black" />
-                <Text style={styles.modalListItemText}>About this account</Text>
-              </View>
-              <View style={styles.modalListItem}>
-                <Octicons name="report" size={24} color="red" />
-                <Text style={styles.modalListItemText}>Report</Text>
-              </View>
-            </View>
-          </View>
-        </Modal>
       </View>
     );
   }
 
   return (
-    <FlatList
-      data={postData}
-      renderItem={renderPost}
-      showsVerticalScrollIndicator={false}
-    />
+    <View>
+      <FlatList
+        data={postData}
+        renderItem={renderPost}
+        showsVerticalScrollIndicator={false}
+      />
+      {/* Modal on Tapping the Nav bar of each post */}
+      <Modal
+        isVisible={isModalVisible}
+        testID={"modal"}
+        onBackdropPress={() => setModalVisible(false)}
+        style={styles.modal}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalTopContainer}>
+            <MaterialIcons name={"bookmark"} size={32} color="black" />
+            <AntDesign name="qrcode" size={32} color="black" />
+          </View>
+
+          <View style={styles.modalListContainer}>
+            <View style={styles.modalListItem}>
+              <AntDesign name="staro" size={24} color="black" />
+              <Text style={styles.modalListItemText}>Add to favorites</Text>
+            </View>
+            <View style={styles.modalListItem}>
+              <Ionicons name="person-remove-outline" size={24} color="black" />
+              <Text style={styles.modalListItemText}>Unfollow</Text>
+            </View>
+
+            <View style={styles.modalListItem}>
+              <Ionicons
+                name="information-circle-outline"
+                size={24}
+                color="black"
+              />
+              <Text style={styles.modalListItemText}>
+                Why you're seeing this post
+              </Text>
+            </View>
+            <View style={styles.modalListItem}>
+              <Feather name="eye-off" size={24} color="black" />
+              <Text style={styles.modalListItemText}>Hide</Text>
+            </View>
+            <View style={styles.modalListItem}>
+              <FontAwesome name="user-o" size={24} color="black" />
+              <Text style={styles.modalListItemText}>About this account</Text>
+            </View>
+            <View style={styles.modalListItem}>
+              <Octicons name="report" size={24} color="red" />
+              <Text style={styles.modalListItemText}>Report</Text>
+            </View>
+          </View>
+        </View>
+      </Modal>
+    </View>
   );
 };
 
