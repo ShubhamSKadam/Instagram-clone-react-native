@@ -4,15 +4,16 @@ import Posts from "../components/Posts";
 import { useSelector } from "react-redux";
 
 const MyPostsScreen = ({ route }) => {
-  const myTappedPost = route.params;
-  console.log(myTappedPost);
+  const { item } = route.params;
+  const postId = item.post.postId;
+  console.log(postId);
   const postData = useSelector((state) => state.posts.postData);
 
   const myPosts = postData.filter((item) => item.userId === 0);
 
   return (
     <View style={styles.container}>
-      <Posts postData={myPosts} postId={myTappedPost.post.postId} />
+      <Posts postData={myPosts} postId={postId} />
     </View>
   );
 };

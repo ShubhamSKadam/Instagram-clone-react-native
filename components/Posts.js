@@ -6,7 +6,7 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -18,13 +18,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { usersSlice } from "../store/usersSlice";
 import { postSlice } from "../store/postSlice";
 import Modal from "react-native-modal";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
-const Posts = ({ postData }) => {
+const Posts = ({ postData, postId }) => {
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.users.dummyData);
 
   const [isModalVisible, setModalVisible] = useState(false);
+
+  // scroll to my post code
+  const flatlistRef = useRef(null);
+  useEffect(() => {
+    const index = postData.findIndex((item) => item.post.postId === postId);
+
+    if (index !== -1 && flatlistRef.current) {
+      flatlistRef.current.scrollToIndex({ index });
+    }
+  }, [postId]);
 
   // modal handler function
   function modalHandler() {
@@ -123,6 +133,16 @@ const Posts = ({ postData }) => {
   return (
     <View style={styles.postListMainContainer}>
       <FlatList
+        ref={flatlistRef}
+        onScrollToIndexFailed={(info) => {
+          const wait = new Promise((resolve) => setTimeout(resolve, 500));
+          wait.then(() => {
+            flatlistRef.current?.scrollToIndex({
+              index: info.index,
+              animated: true,
+            });
+          });
+        }}
         data={postData}
         renderItem={renderPost}
         showsVerticalScrollIndicator={false}
