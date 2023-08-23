@@ -20,10 +20,9 @@ import { postSlice } from "../store/postSlice";
 import Modal from "react-native-modal";
 import { useState } from "react";
 
-const Posts = () => {
+const Posts = ({ postData }) => {
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.users.dummyData);
-  const postData = useSelector((state) => state.posts.postData);
 
   const [isModalVisible, setModalVisible] = useState(false);
 

@@ -16,15 +16,15 @@ const ProfilePostImages = () => {
 
   const myPosts = postData.filter((item) => item.userId === 0);
 
-  // function postImagePressHandler(item) {
-  //   navigation.navigate("home", { item: item });
-  // }
+  function postImagePressHandler(item) {
+    navigation.navigate("myPosts", { item: item });
+  }
 
   function renderPostImages({ item }) {
     return (
       <TouchableOpacity
         style={styles.postImageContainer}
-        // onPress={() => postImagePressHandler(item)}
+        onPress={() => postImagePressHandler(item)}
       >
         <Image source={item.post.postImage} style={styles.postImage} />
       </TouchableOpacity>

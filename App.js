@@ -16,6 +16,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Provider } from "react-redux";
 import { store } from "./store";
 import SavedPostScreen from "./screens/SavedPostScreen";
+import MyPostsScreen from "./screens/MyPostsScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -107,6 +108,7 @@ export default function App() {
             name="All Saved Posts"
             component={SavedPostScreen}
           ></Stack.Screen>
+          <Stack.Screen name="myPosts" component={MyPostsScreen}></Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

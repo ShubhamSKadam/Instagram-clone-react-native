@@ -8,6 +8,8 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 const HomeScreen = () => {
+  const postData = useSelector((state) => state.posts.postData);
+
   const HorizontalLine = () => {
     return <View style={styles.horizontalLine}></View>;
   };
@@ -17,7 +19,7 @@ const HomeScreen = () => {
       <Header />
       <Stories />
       <HorizontalLine />
-      <Posts />
+      <Posts postData={postData} />
     </SafeAreaView>
   );
 };
