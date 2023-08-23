@@ -15,6 +15,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Provider } from "react-redux";
 import { store } from "./store";
+import SavedPostScreen from "./screens/SavedPostScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -101,6 +102,10 @@ export default function App() {
             name="BottomTabScreens"
             component={BottomTabScreens}
             options={{ headerShown: false }}
+          ></Stack.Screen>
+          <Stack.Screen
+            name="savedPosts"
+            component={SavedPostScreen}
           ></Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>

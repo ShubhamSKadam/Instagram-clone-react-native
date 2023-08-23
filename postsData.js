@@ -62,7 +62,7 @@ export const postData = [
   {
     userId: 0,
     post: {
-      postId: 3,
+      postId: 5,
       postImage: require("./assets/PostImages/preeti.jpg"),
       likes: 340,
       isLiked: false,
@@ -77,7 +77,7 @@ export const postData = [
   {
     userId: 0,
     post: {
-      postId: 3,
+      postId: 6,
       postImage: require("./assets/PostImages/pratiksha.jpg"),
       likes: 340,
       isLiked: false,
@@ -92,7 +92,7 @@ export const postData = [
   {
     userId: 0,
     post: {
-      postId: 3,
+      postId: 7,
       postImage: require("./assets/PostImages/adyasar.jpg"),
       likes: 340,
       isLiked: false,

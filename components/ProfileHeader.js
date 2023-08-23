@@ -7,8 +7,10 @@ import Modal from "react-native-modal";
 import { Fontisto } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 const ProfileHeader = () => {
+  const navigation = useNavigation();
   const [isModalVisible, setModalVisible] = useState(false);
   const [isHeaderModalVisible, setIsHeaderModalVisible] = useState(false);
 
@@ -18,6 +20,11 @@ const ProfileHeader = () => {
 
   function headerModalhandler() {
     setIsHeaderModalVisible(!isHeaderModalVisible);
+  }
+
+  function savedPostNavigationHandler() {
+    headerModalhandler();
+    navigation.navigate("savedPosts");
   }
 
   return (
@@ -96,10 +103,13 @@ const ProfileHeader = () => {
             <Text style={styles.navModalText}>QR code</Text>
           </View>
 
-          <View style={styles.navHeaderModalItem}>
+          <TouchableOpacity
+            style={styles.navHeaderModalItem}
+            onPress={savedPostNavigationHandler}
+          >
             <FontAwesome name="bookmark" size={24} color="black" />
             <Text style={styles.navModalText}>Saved</Text>
-          </View>
+          </TouchableOpacity>
 
           <View style={styles.navHeaderModalItem}>
             <Feather name="users" size={24} color="black" />
