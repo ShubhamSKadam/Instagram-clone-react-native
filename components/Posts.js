@@ -9,17 +9,26 @@ import {
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
-import { Fontisto } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Octicons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { usersSlice } from "../store/usersSlice";
 import { postSlice } from "../store/postSlice";
+import Modal from "react-native-modal";
+import { useState } from "react";
 
 const Posts = () => {
   const userData = useSelector((state) => state.users.dummyData);
   const postData = useSelector((state) => state.posts.postData);
+
+  const [isModalVisible, setModalVisible] = useState(false);
+
+  function modalHandler() {
+    setModalVisible(!isModalVisible);
+  }
 
   const dispatch = useDispatch();
 
@@ -55,7 +64,9 @@ const Posts = () => {
             </TouchableOpacity>
             <Text style={styles.postUserText}>{postUser.name}</Text>
           </View>
-          <Ionicons name="ellipsis-vertical" size={24} color="black" />
+          <TouchableOpacity onPress={modalHandler}>
+            <Ionicons name="ellipsis-vertical" size={24} color="black" />
+          </TouchableOpacity>
         </View>
 
         {/* Post Image */}
@@ -90,6 +101,59 @@ const Posts = () => {
         <View style={styles.postLikes}>
           <Text>{item.post.likes} likes</Text>
         </View>
+
+        {/* Modal on Tapping the Nav bar of each post */}
+        <Modal
+          isVisible={isModalVisible}
+          testID={"modal"}
+          onBackdropPress={() => setModalVisible(false)}
+          style={styles.modal}
+        >
+          <View style={styles.modalContainer}>
+            <View style={styles.modalTopContainer}>
+              <MaterialIcons name="bookmark-outline" size={32} color="black" />
+              <AntDesign name="qrcode" size={32} color="black" />
+            </View>
+
+            <View style={styles.modalListContainer}>
+              <View style={styles.modalListItem}>
+                <AntDesign name="staro" size={24} color="black" />
+                <Text style={styles.modalListItemText}>Add to favorites</Text>
+              </View>
+              <View style={styles.modalListItem}>
+                <Ionicons
+                  name="person-remove-outline"
+                  size={24}
+                  color="black"
+                />
+                <Text style={styles.modalListItemText}>Unfollow</Text>
+              </View>
+
+              <View style={styles.modalListItem}>
+                <Ionicons
+                  name="information-circle-outline"
+                  size={24}
+                  color="black"
+                />
+                <Text style={styles.modalListItemText}>
+                  Why you're seeing this post
+                </Text>
+              </View>
+              <View style={styles.modalListItem}>
+                <Feather name="eye-off" size={24} color="black" />
+                <Text style={styles.modalListItemText}>Hide</Text>
+              </View>
+              <View style={styles.modalListItem}>
+                <FontAwesome name="user-o" size={24} color="black" />
+                <Text style={styles.modalListItemText}>About this account</Text>
+              </View>
+              <View style={styles.modalListItem}>
+                <Octicons name="report" size={24} color="red" />
+                <Text style={styles.modalListItemText}>Report</Text>
+              </View>
+            </View>
+          </View>
+        </Modal>
       </View>
     );
   }
@@ -162,5 +226,37 @@ const styles = StyleSheet.create({
   },
   sendMessage: {
     transform: [{ rotateY: "180deg" }],
+  },
+  // Modal styling
+  modal: {
+    justifyContent: "flex-end",
+    margin: 0,
+  },
+  modalContainer: {
+    backgroundColor: "white",
+    paddingHorizontal: 18,
+    paddingVertical: 18,
+    paddingTop: 45,
+    borderTopLeftRadius: 14,
+    borderTopRightRadius: 14,
+  },
+  modalTopContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    marginBottom: 14,
+  },
+  modalListItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginVertical: 14,
+  },
+  modalListItemText: {
+    fontSize: 16,
+    marginLeft: 10,
+  },
+  modalListContainer: {
+    paddingVertical: 8,
+    paddingHorizontal: 4,
   },
 });

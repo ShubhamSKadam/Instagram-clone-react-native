@@ -42,7 +42,11 @@ export default function App() {
             component={SearchScreen}
             options={{
               tabBarIcon: ({ color, size, focused }) => (
-                <AntDesign name="search1" size={28} color={"black"} />
+                <Ionicons
+                  name={focused ? "search-sharp" : "search-outline"}
+                  size={28}
+                  color="black"
+                />
               ),
             }}
           ></Tab.Screen>
@@ -50,8 +54,12 @@ export default function App() {
             name="post"
             component={PostScreen}
             options={{
-              tabBarIcon: ({ color, size }) => (
-                <Octicons name="diff-added" size={28} color="black" />
+              tabBarIcon: ({ color, size, focused }) => (
+                <Octicons
+                  name="diff-added"
+                  size={28}
+                  color={focused ? "gray" : "black"}
+                />
               ),
             }}
           ></Tab.Screen>
@@ -59,9 +67,9 @@ export default function App() {
             name="reel"
             component={ReelScreen}
             options={{
-              tabBarIcon: ({ color, size }) => (
+              tabBarIcon: ({ color, size, focused }) => (
                 <MaterialCommunityIcons
-                  name="play-box-outline"
+                  name={focused ? "play-box" : "play-box-outline"}
                   size={28}
                   color="black"
                 />

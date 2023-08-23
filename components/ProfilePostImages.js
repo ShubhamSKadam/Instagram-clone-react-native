@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     margin: 1,
   },
   postImage: {
-    height: 150,
-    width: 150,
+    height: 140,
+    width: 145,
   },
 });

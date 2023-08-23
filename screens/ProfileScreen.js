@@ -23,6 +23,7 @@ const ProfileScreen = () => {
       {/*  Profile Post Header*/}
       <ProfilePosts />
 
+    {/* Post Images in Profile  */}
       <ProfilePostImages />
     </SafeAreaView>
   );

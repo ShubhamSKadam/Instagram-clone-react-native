@@ -4,7 +4,7 @@ import React from 'react'
 const ReelScreen = () => {
   return (
     <View>
-      <Text>ReelScreen</Text>
+        
     </View>
   )
 }
