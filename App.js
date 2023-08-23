@@ -104,7 +104,7 @@ export default function App() {
             options={{ headerShown: false }}
           ></Stack.Screen>
           <Stack.Screen
-            name="savedPosts"
+            name="All Saved Posts"
             component={SavedPostScreen}
           ></Stack.Screen>
         </Stack.Navigator>

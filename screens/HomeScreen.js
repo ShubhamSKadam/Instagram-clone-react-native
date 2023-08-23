@@ -1,8 +1,11 @@
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import React from "react";
+import { useRef } from "react";
 import Header from "../components/Header";
 import Stories from "../components/Stories";
 import Posts from "../components/Posts";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const HomeScreen = () => {
   const HorizontalLine = () => {

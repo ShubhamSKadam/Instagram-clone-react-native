@@ -26,10 +26,10 @@ export default SavedPostScreen;
 
 const styles = StyleSheet.create({
   postImageContainer: {
-    margin: 1,
+    padding: 0.5,
   },
   postImage: {
-    height: 140,
-    width: 145,
+    height: 150,
+    width: 150,
   },
 });

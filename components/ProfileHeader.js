@@ -24,7 +24,7 @@ const ProfileHeader = () => {
 
   function savedPostNavigationHandler() {
     headerModalhandler();
-    navigation.navigate("savedPosts");
+    navigation.navigate("All Saved Posts");
   }
 
   return (
@@ -208,6 +208,8 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     paddingVertical: 14,
     paddingHorizontal: 8,
+    borderTopLeftRadius: 14,
+    borderTopRightRadius: 14,
   },
   navHeaderModalItem: {
     flexDirection: "row",
@@ -216,7 +218,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 18,
   },
   navModalText: {
-    fontSize: 18,
+    fontSize: 16,
     paddingLeft: 14,
   },
 });
