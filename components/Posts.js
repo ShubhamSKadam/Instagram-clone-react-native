@@ -122,7 +122,7 @@ const Posts = () => {
   }
 
   return (
-    <View>
+    <View style={styles.postListMainContainer}>
       <FlatList
         data={postData}
         renderItem={renderPost}
@@ -185,6 +185,9 @@ export default Posts;
 const styles = StyleSheet.create({
   container: {
     marginBottom: 14,
+  },
+  postListMainContainer: {
+    flex: 1,
   },
   postProfile: {
     height: 50,

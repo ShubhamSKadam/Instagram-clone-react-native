@@ -10,7 +10,7 @@ const HomeScreen = () => {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.rootContainer}>
       <Header />
       <Stories />
       <HorizontalLine />
@@ -26,5 +26,8 @@ const styles = StyleSheet.create({
     borderBottomColor: "#999999",
     borderBottomWidth: 0.2,
     marginVertical: 10,
+  },
+  rootContainer: {
+    flex: 1,
   },
 });
