@@ -8,8 +8,6 @@ const ProfileView = () => {
   const userData = useSelector((state) => state.users.dummyData);
   const myData = userData.filter((user) => user.id === 0);
 
-  console.log(myData[0].storyTapped);
-
   function tapImageStoryHandler() {
     dispatch(usersSlice.actions.tapStory(myData[0].id));
   }

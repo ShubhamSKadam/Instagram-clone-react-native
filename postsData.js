@@ -6,6 +6,7 @@ export const postData = [
       postImage: require("./assets/PostImages/ssk.jpg"),
       likes: 1210,
       isLiked: false,
+      isBookmarked: false,
     },
     reel: {
       reelId: 1,
@@ -20,6 +21,7 @@ export const postData = [
       postImage: require("./assets/PostImages/aditya.jpg"),
       likes: 840,
       isLiked: false,
+      isBookmarked: false,
     },
     reel: {
       reelId: 2,
@@ -34,6 +36,7 @@ export const postData = [
       postImage: require("./assets/PostImages/amlan.jpg"),
       likes: 340,
       isLiked: false,
+      isBookmarked: false,
     },
     reel: {
       reelId: 3,
@@ -48,6 +51,7 @@ export const postData = [
       postImage: require("./assets/PostImages/prakhar.jpg"),
       likes: 340,
       isLiked: false,
+      isBookmarked: false,
     },
     reel: {
       reelId: 3,
@@ -62,6 +66,7 @@ export const postData = [
       postImage: require("./assets/PostImages/preeti.jpg"),
       likes: 340,
       isLiked: false,
+      isBookmarked: false,
     },
     reel: {
       reelId: 3,
@@ -76,6 +81,7 @@ export const postData = [
       postImage: require("./assets/PostImages/pratiksha.jpg"),
       likes: 340,
       isLiked: false,
+      isBookmarked: false,
     },
     reel: {
       reelId: 3,
@@ -90,6 +96,7 @@ export const postData = [
       postImage: require("./assets/PostImages/adyasar.jpg"),
       likes: 340,
       isLiked: false,
+      isBookmarked: false,
     },
     reel: {
       reelId: 3,

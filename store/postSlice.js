@@ -24,5 +24,13 @@ export const postSlice = createSlice({
         selectedPost.post.likes--;
       }
     },
+    saveBookmark: (state, action) => {
+      const savedPostIndex = state.postData.findIndex(
+        (item) => item.post.postId === action.payload
+      );
+
+      const selectedBookmark = state.postData[savedPostIndex];
+      selectedBookmark.post.isBookmarked = !selectedBookmark.post.isBookmarked;
+    },
   },
 });

@@ -21,6 +21,7 @@ import Modal from "react-native-modal";
 import { useState } from "react";
 
 const Posts = () => {
+  const dispatch = useDispatch();
   const userData = useSelector((state) => state.users.dummyData);
   const postData = useSelector((state) => state.posts.postData);
 
@@ -29,8 +30,6 @@ const Posts = () => {
   function modalHandler() {
     setModalVisible(!isModalVisible);
   }
-
-  const dispatch = useDispatch();
 
   function renderPost({ item }) {
     function profileImagePressHandler(id) {
@@ -45,6 +44,9 @@ const Posts = () => {
       dispatch(postSlice.actions.setLiked(item.post.postId));
     }
 
+    function saveBookMarkHandler() {
+      dispatch(postSlice.actions.saveBookmark(item.post.postId));
+    }
     return (
       <View style={styles.container}>
         {/* Post Header section */}
@@ -95,7 +97,13 @@ const Posts = () => {
           </View>
 
           {/* Bookmark */}
-          <Octicons name="bookmark" size={28} color="black" />
+          <TouchableOpacity onPress={saveBookMarkHandler}>
+            <MaterialIcons
+              name={item.post.isBookmarked ? "bookmark" : "bookmark-border"}
+              size={28}
+              color="black"
+            />
+          </TouchableOpacity>
         </View>
         {/* likes */}
         <View style={styles.postLikes}>
@@ -111,7 +119,13 @@ const Posts = () => {
         >
           <View style={styles.modalContainer}>
             <View style={styles.modalTopContainer}>
-              <MaterialIcons name="bookmark-outline" size={32} color="black" />
+              <TouchableOpacity onPress={saveBookMarkHandler}>
+                <MaterialIcons
+                  name={item.post.isBookmarked ? "bookmark" : "bookmark-border"}
+                  size={32}
+                  color="black"
+                />
+              </TouchableOpacity>
               <AntDesign name="qrcode" size={32} color="black" />
             </View>
 
