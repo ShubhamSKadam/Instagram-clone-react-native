@@ -1,21 +1,55 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import React from "react";
+import React, { useState } from "react";
+import ProfilePostImages from "./ProfilePostImages";
+import ProfilePostReels from "./ProfilePostReels";
 
 const ProfilePosts = () => {
+  const [activeTab, setActiveTab] = useState(1);
+
+  function postReelHeaderHandler(newTab) {
+    setActiveTab(newTab);
+  }
+
   return (
-    <View style={styles.container}>
-      <View style={styles.iconContainer}>
-        <MaterialIcons name="grid-on" size={30} color="black" />
+    <View>
+      <View style={styles.container}>
+        <TouchableOpacity
+          style={styles.iconContainer}
+          onPress={() => postReelHeaderHandler(1)} // Pass the desired tab value
+        >
+          <View
+            style={
+              activeTab === 1
+                ? styles.iconContainerActive
+                : styles.iconContainerInactive
+            }
+          >
+            <MaterialIcons name="grid-on" size={30} color="black" />
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.iconContainer}
+          onPress={() => postReelHeaderHandler(2)} // Pass the desired tab value
+        >
+          <View
+            style={
+              activeTab === 2
+                ? styles.iconContainerActive
+                : styles.iconContainerInactive
+            }
+          >
+            <MaterialCommunityIcons
+              name="contacts-outline"
+              size={30}
+              color="black"
+            />
+          </View>
+        </TouchableOpacity>
       </View>
-      <View style={styles.iconContainer}>
-        <MaterialCommunityIcons
-          name="contacts-outline"
-          size={30}
-          color="black"
-        />
-      </View>
+      {activeTab === 1 && <ProfilePostImages />}
+      {activeTab === 2 && <ProfilePostReels />}
     </View>
   );
 };
@@ -25,11 +59,23 @@ export default ProfilePosts;
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    marginVertical: 14,
+    marginTop: 4,
+    marginBottom: 2,
   },
-  iconContainer: {
+  iconContainerActive: {
     justifyContent: "center",
     alignItems: "center",
+    width: "100%",
+    borderBottomWidth: 2,
+    paddingVertical: 6,
+  },
+  iconContainerInactive: {
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    paddingVertical: 6,
+  },
+  iconContainer: {
     width: "50%",
   },
 });

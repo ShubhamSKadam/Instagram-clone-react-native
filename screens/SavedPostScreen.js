@@ -1,4 +1,11 @@
-import { FlatList, StyleSheet, Text, View, Image } from "react-native";
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+} from "react-native";
 import React from "react";
 import { useSelector } from "react-redux";
 
@@ -7,11 +14,18 @@ const SavedPostScreen = () => {
 
   const savedData = postData.filter((item) => item.post.isBookmarked);
 
+  function savedImagePressHandler() {
+    
+  }
+
   function renderSavedPost({ item }) {
     return (
-      <View style={styles.postImageContainer}>
+      <TouchableOpacity
+        style={styles.postImageContainer}
+        onPress={() => savedImagePressHandler}
+      >
         <Image source={item.post.postImage} style={styles.postImage} />
-      </View>
+      </TouchableOpacity>
     );
   }
 

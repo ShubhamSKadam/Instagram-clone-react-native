@@ -26,7 +26,7 @@ const Posts = ({ postData, postId }) => {
 
   const [isModalVisible, setModalVisible] = useState(false);
 
-  // scroll to my post code
+  // scroll to my postId if I tap a post from my profile and saved
   const flatlistRef = useRef(null);
   useEffect(() => {
     const index = postData.findIndex((item) => item.post.postId === postId);
@@ -150,7 +150,6 @@ const Posts = ({ postData, postId }) => {
       {/* Modal on Tapping the Nav bar of each post */}
       <Modal
         isVisible={isModalVisible}
-        testID={"modal"}
         onBackdropPress={() => setModalVisible(false)}
         style={styles.modal}
       >

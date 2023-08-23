@@ -107,7 +107,7 @@ const ProfileHeader = () => {
             style={styles.navHeaderModalItem}
             onPress={savedPostNavigationHandler}
           >
-            <FontAwesome name="bookmark" size={24} color="black" />
+            <FontAwesome name="bookmark-o" size={24} color="black" />
             <Text style={styles.navModalText}>Saved</Text>
           </TouchableOpacity>
 

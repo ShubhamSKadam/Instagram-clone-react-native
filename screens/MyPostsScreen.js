@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 const MyPostsScreen = ({ route }) => {
   const { item } = route.params;
   const postId = item.post.postId;
-  console.log(postId);
   const postData = useSelector((state) => state.posts.postData);
 
   const myPosts = postData.filter((item) => item.userId === 0);

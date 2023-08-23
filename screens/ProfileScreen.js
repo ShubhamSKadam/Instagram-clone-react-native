@@ -24,7 +24,7 @@ const ProfileScreen = () => {
       <ProfilePosts />
 
     {/* Post Images in Profile  */}
-      <ProfilePostImages />
+      {/* <ProfilePostImages /> */}
     </SafeAreaView>
   );
 };
