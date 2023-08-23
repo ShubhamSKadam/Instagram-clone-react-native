@@ -3,7 +3,7 @@ import { postData } from "../postsData";
 
 const initialState = {
   postData: postData,
-  selectedPost: null,
+  selectedPostInfo: null,
 };
 
 export const postSlice = createSlice({
@@ -31,6 +31,12 @@ export const postSlice = createSlice({
 
       const selectedBookmark = state.postData[savedPostIndex];
       selectedBookmark.post.isBookmarked = !selectedBookmark.post.isBookmarked;
+    },
+    setSelectedPostInfo: (state, action) => {
+      const item = action.payload;
+      state.selectedPostInfo = state.postData.find(
+        (item) => item.post.postId === item.post.postId
+      );
     },
   },
 });

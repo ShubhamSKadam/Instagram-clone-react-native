@@ -27,10 +27,12 @@ const Posts = () => {
 
   const [isModalVisible, setModalVisible] = useState(false);
 
+  // modal handler function
   function modalHandler() {
     setModalVisible(!isModalVisible);
   }
 
+  // render function for flatlist
   function renderPost({ item }) {
     function profileImagePressHandler(id) {
       dispatch(usersSlice.actions.tapStory(id));
@@ -47,6 +49,12 @@ const Posts = () => {
     function saveBookMarkHandler() {
       dispatch(postSlice.actions.saveBookmark(item.post.postId));
     }
+
+    function onPressElipseHandler() {
+      modalHandler();
+      dispatch(postSlice.actions.setSelectedPostInfo(item));
+    }
+
     return (
       <View style={styles.container}>
         {/* Post Header section */}
@@ -66,7 +74,7 @@ const Posts = () => {
             </TouchableOpacity>
             <Text style={styles.postUserText}>{postUser.name}</Text>
           </View>
-          <TouchableOpacity onPress={modalHandler}>
+          <TouchableOpacity onPress={onPressElipseHandler}>
             <Ionicons name="ellipsis-vertical" size={24} color="black" />
           </TouchableOpacity>
         </View>
