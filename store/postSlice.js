@@ -25,6 +25,7 @@ export const postSlice = createSlice({
         selectedPost.post.likes--;
       }
     },
+    // bookmark the post
     saveBookmark: (state, action) => {
       const savedPostIndex = state.postData.findIndex(
         (item) => item.post.postId === action.payload
@@ -54,7 +55,7 @@ export const postSlice = createSlice({
         selectedReel.reel.likes--;
       }
     },
-    // Save the reel
+    // bookmark the reel
     saveBookmarkReel: (state, action) => {
       const savedReelIndex = state.postData.findIndex(
         (item) => item.reel.reelId === action.payload

@@ -10,7 +10,6 @@ const ProfilePostReels = () => {
   const postData = useSelector((state) => state.posts.postData);
   const myPosts = postData.filter((item) => item.userId === 0);
 
-  console.log(myPosts);
 
   function myReelHandler({ item }) {
     return (

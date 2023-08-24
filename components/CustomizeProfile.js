@@ -7,12 +7,18 @@ import {
 } from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
+import * as Sharing from "expo-sharing";
 
 const CustomizeProfile = () => {
+  function shareProfileHandler() {}
+
   return (
     <View style={styles.container}>
       {/* Edit profile */}
-      <TouchableOpacity style={styles.customizeButton}>
+      <TouchableOpacity
+        style={styles.customizeButton}
+        onPress={shareProfileHandler}
+      >
         <Text style={styles.customizeText}>Edit profile</Text>
       </TouchableOpacity>
 

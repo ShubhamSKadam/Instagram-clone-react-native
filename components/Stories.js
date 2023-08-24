@@ -15,6 +15,7 @@ const Stories = () => {
   const data = useSelector((state) => state.users.dummyData);
 
   function renderStories({ item }) {
+    console.log(item);
     function storiesTapHandler() {
       dispatch(usersSlice.actions.tapStory(item.id));
     }

@@ -4,38 +4,48 @@ import { useDispatch, useSelector } from "react-redux";
 import { usersSlice } from "../store/usersSlice";
 import { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
+import { postSlice } from "../store/postSlice";
 
 const ProfileView = () => {
+  const dispatch = useDispatch();
+
+  // my Original Profile Image
   const myImage = require("../assets/ProfileImages/shubham.png");
 
   const [image, setImage] = useState(null);
   const [changedProfile, setChangedProfile] = useState(false);
 
-  const dispatch = useDispatch();
-  const userData = useSelector((state) => state.users.dummyData);
-  const myData = userData.filter((user) => user.id === 0);
+  const usersData = useSelector((state) => state.users.dummyData);
+  const myData = usersData.filter((user) => user.id === 0);
 
   function tapImageStoryHandler() {
+    // viewing the story when tapped , i.e making it false
     dispatch(usersSlice.actions.tapStory(myData[0].id));
 
+    // Image picker handler
     const pickImage = async () => {
-      let result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.All,
-        allowsEditing: true,
-        aspect: [4, 3],
-        quality: 1,
-      });
+      try {
+        let result = await ImagePicker.launchImageLibraryAsync({
+          mediaTypes: ImagePicker.MediaTypeOptions.All,
+          allowsEditing: true,
+          aspect: [4, 3],
+          quality: 1,
+        });
 
-      if (!result.canceled) {
-        setImage(result.assets[0].uri);
-        setChangedProfile(true);
+        if (!result.cancelled) {
+          setImage(result.assets[0].uri);
+          setChangedProfile(true);
+          dispatch(usersSlice.actions.updateProfilePic(result.assets[0].uri));
+        }
+      } catch (error) {
+        console.error("Error picking image:", error);
+        // Handle the error appropriately (e.g., show a message to the user)
       }
     };
 
+    // Call the image picker handler
     pickImage();
   }
-
-  console.log(image);
 
   return (
     <View style={styles.container}>

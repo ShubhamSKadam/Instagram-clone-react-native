@@ -21,5 +21,11 @@ export const usersSlice = createSlice({
       );
       state.dummyData[tappedUserIndex].storyTapped = true;
     },
+
+    // update Profile Pic
+    updateProfilePic: (state, action) => {
+      const uriImage = action.payload;
+      state.dummyData[0].profileImage = {uri:uriImage};
+    },
   },
 });
