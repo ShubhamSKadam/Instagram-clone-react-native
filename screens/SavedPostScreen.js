@@ -10,6 +10,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import MyPostsScreen from "./MyPostsScreen";
 import { useNavigation } from "@react-navigation/native";
+import ProfilePosts from "../components/ProfilePosts";
 
 const SavedPostScreen = () => {
   const navigation = useNavigation();
@@ -18,7 +19,7 @@ const SavedPostScreen = () => {
   const savedData = postData.filter((item) => item.post.isBookmarked);
 
   function savedImagePressHandler(item) {
-    navigation.navigate("myPosts", { item: item, tapFrom:'savedPost' });
+    navigation.navigate("myPosts", { item: item, tapFrom: "savedPost" });
   }
 
   function renderSavedPost({ item }) {
@@ -34,7 +35,8 @@ const SavedPostScreen = () => {
 
   return (
     <View style={styles.container}>
-      <FlatList data={savedData} renderItem={renderSavedPost} numColumns={3} />
+      <ProfilePosts data={savedData}/>
+      {/* <FlatList data={savedData} renderItem={renderSavedPost} numColumns={3} /> */}
     </View>
   );
 };

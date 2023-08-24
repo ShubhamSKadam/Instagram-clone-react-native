@@ -10,11 +10,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 
-const ProfilePostImages = () => {
+const ProfilePostImages = ({ data }) => {
   const navigation = useNavigation();
-  const postData = useSelector((state) => state.posts.postData);
-
-  const myPosts = postData.filter((item) => item.userId === 0);
 
   function postImagePressHandler(item) {
     navigation.navigate("myPosts", { item: item });
@@ -33,7 +30,7 @@ const ProfilePostImages = () => {
 
   return (
     <View style={styles.container}>
-      <FlatList data={myPosts} renderItem={renderPostImages} numColumns={3} />
+      <FlatList data={data} renderItem={renderPostImages} numColumns={3} />
     </View>
   );
 };

@@ -4,12 +4,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useRef } from "react";
 
-const ProfilePostReels = () => {
+const ProfilePostReels = ({ data }) => {
   const video = React.useRef(null);
-
-  const postData = useSelector((state) => state.posts.postData);
-  const myPosts = postData.filter((item) => item.userId === 0);
-
 
   function myReelHandler({ item }) {
     return (
@@ -21,7 +17,7 @@ const ProfilePostReels = () => {
 
   return (
     <View>
-      <FlatList data={myPosts} renderItem={myReelHandler} numColumns={3} />
+      <FlatList data={data} renderItem={myReelHandler} numColumns={3} />
     </View>
   );
 };

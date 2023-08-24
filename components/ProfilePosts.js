@@ -5,8 +5,9 @@ import { Octicons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import ProfilePostImages from "./ProfilePostImages";
 import ProfilePostReels from "./ProfilePostReels";
+import { useSelector } from "react-redux";
 
-const ProfilePosts = () => {
+const ProfilePosts = ({ data }) => {
   const [activeTab, setActiveTab] = useState(1);
 
   function postReelHeaderHandler(newTab) {
@@ -45,8 +46,8 @@ const ProfilePosts = () => {
           </View>
         </TouchableOpacity>
       </View>
-      {activeTab === 1 && <ProfilePostImages />}
-      {activeTab === 2 && <ProfilePostReels />}
+      {activeTab === 1 && <ProfilePostImages data={data} />}
+      {activeTab === 2 && <ProfilePostReels data={data} />}
     </View>
   );
 };
