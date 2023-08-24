@@ -25,7 +25,7 @@ export const usersSlice = createSlice({
     // update Profile Pic
     updateProfilePic: (state, action) => {
       const uriImage = action.payload;
-      state.dummyData[0].profileImage = {uri:uriImage};
+      state.dummyData[0].profileImage = { uri: uriImage };
     },
   },
 });

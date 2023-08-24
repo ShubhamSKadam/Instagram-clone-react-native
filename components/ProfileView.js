@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useDispatch, useSelector } from "react-redux";
 import { usersSlice } from "../store/usersSlice";
 import { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
-import { postSlice } from "../store/postSlice";
+import { useEffect } from "react";
 
 const ProfileView = () => {
   const dispatch = useDispatch();
@@ -35,6 +36,9 @@ const ProfileView = () => {
         if (!result.cancelled) {
           setImage(result.assets[0].uri);
           setChangedProfile(true);
+
+          // Store the image URI in AsyncStorage
+          await AsyncStorage.setItem("profileImage", result.assets[0].uri);
           dispatch(usersSlice.actions.updateProfilePic(result.assets[0].uri));
         }
       } catch (error) {
@@ -46,6 +50,21 @@ const ProfileView = () => {
     // Call the image picker handler
     pickImage();
   }
+
+  useEffect(() => {
+    const fetchProfileImage = async () => {
+      try {
+        const storedImage = await AsyncStorage.getItem("profileImage");
+        if (storedImage) {
+          setImage(storedImage);
+        }
+      } catch (error) {
+        console.error("Error fetching profile image:", error);
+      }
+    };
+
+    fetchProfileImage();
+  }, []);
 
   return (
     <View style={styles.container}>
