@@ -2,15 +2,40 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { usersSlice } from "../store/usersSlice";
+import { useState } from "react";
+import * as ImagePicker from "expo-image-picker";
 
 const ProfileView = () => {
+  const myImage = require("../assets/ProfileImages/shubham.png");
+
+  const [image, setImage] = useState(null);
+  const [changedProfile, setChangedProfile] = useState(false);
+
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.users.dummyData);
   const myData = userData.filter((user) => user.id === 0);
 
   function tapImageStoryHandler() {
     dispatch(usersSlice.actions.tapStory(myData[0].id));
+
+    const pickImage = async () => {
+      let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+      });
+
+      if (!result.canceled) {
+        setImage(result.assets[0].uri);
+        setChangedProfile(true);
+      }
+    };
+
+    pickImage();
   }
+
+  console.log(image);
 
   return (
     <View style={styles.container}>
@@ -24,7 +49,7 @@ const ProfileView = () => {
             ]}
           >
             <Image
-              source={require("../assets/ProfileImages/shubham.png")}
+              source={changedProfile ? { uri: image } : myImage}
               style={styles.profileImage}
             />
           </View>
