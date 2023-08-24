@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import Posts from "../components/Posts";
 import { useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";

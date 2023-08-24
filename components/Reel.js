@@ -1,14 +1,26 @@
-import { FlatList, StyleSheet, Text, View} from "react-native";
-import Video from "react-native-video";
+import { FlatList, StyleSheet, Text, View, Button } from "react-native";
+import { useRef, useState } from "react";
+import { Video, ResizeMode } from "expo-av";
 import React from "react";
 
 const Reel = ({ reelData }) => {
+  const video = useRef(null);
   function renderReelPost({ item }) {
-    console.log(item.reel.reelId);
     return (
-      <View style={{ flex: 1 }}>
-        <Video source={item.reel.reelVideo} />
-        <Text>Hello World</Text>
+      <View style={styles.container}>
+        {/* Video Reel Header */}
+        <Video
+          ref={video}
+          style={styles.video}
+          source={item.reel.reelVideo}
+          useNativeControls
+          resizeMode={ResizeMode.CONTAIN}
+          isLooping
+        />
+
+        <View>
+          
+        </View>
       </View>
     );
   }
@@ -21,4 +33,12 @@ const Reel = ({ reelData }) => {
 
 export default Reel;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  video: {
+    width: "100%",
+    height: 800,
+  },
+  container: {
+    flex: 1,
+  },
+});

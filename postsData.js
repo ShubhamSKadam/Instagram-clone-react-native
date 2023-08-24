@@ -10,7 +10,7 @@ export const postData = [
     },
     reel: {
       reelId: 1,
-      reelVideo: require("./assets/Reels/shubham.mp4"),
+      reelVideo: require("./assets/Reels/reel.mp4"),
       likes: 1500,
     },
   },
@@ -25,7 +25,7 @@ export const postData = [
     },
     reel: {
       reelId: 2,
-      reelVideo: require("./assets/Reels/amlan.mp4"),
+      reelVideo: require("./assets/Reels/reel.mp4"),
       likes: 1500,
     },
   },
