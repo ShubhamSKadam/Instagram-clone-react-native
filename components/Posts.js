@@ -46,6 +46,10 @@ const Posts = ({ postData, postId }) => {
     setModalVisible(!isModalVisible);
   }
 
+  function saveBookMarkHandlerEllipse() {
+    dispatch(postSlice.actions.saveBookmark(ellipsePostBookmark.post.postId));
+  }
+
   // render function for flatlist
   function renderPost({ item }) {
     function profileImagePressHandler(id) {
@@ -155,15 +159,17 @@ const Posts = ({ postData, postId }) => {
       {/* Modal on Tapping the Nav bar of each post */}
       <BottomModal isModalVisible={isModalVisible} modalHandler={modalHandler}>
         <View style={styles.modalTopContainer}>
-          <MaterialIcons
-            name={
-              ellipsePostBookmark?.post?.isBookmarked
-                ? "bookmark"
-                : "bookmark-outline"
-            }
-            size={32}
-            color="black"
-          />
+          <TouchableOpacity onPress={saveBookMarkHandlerEllipse}>
+            <MaterialIcons
+              name={
+                ellipsePostBookmark?.post?.isBookmarked
+                  ? "bookmark"
+                  : "bookmark-outline"
+              }
+              size={32}
+              color="black"
+            />
+          </TouchableOpacity>
           <AntDesign name="qrcode" size={32} color="black" />
         </View>
 
