@@ -12,6 +12,7 @@ export const postData = [
       reelId: 1,
       reelVideo: require("./assets/Reels/reel.mp4"),
       likes: 1500,
+      isLiked: false,
     },
   },
   {
@@ -25,25 +26,27 @@ export const postData = [
     },
     reel: {
       reelId: 2,
-      reelVideo: require("./assets/Reels/reel.mp4"),
+      reelVideo: require("./assets/Reels/amlan.mp4"),
       likes: 1500,
+      isLiked: false,
     },
   },
-  // {
-  //   userId: 2,
-  //   post: {
-  //     postId: 3,
-  //     postImage: require("./assets/PostImages/amlan.jpg"),
-  //     likes: 340,
-  //     isLiked: false,
-  //     isBookmarked: false,
-  //   },
-  //   reel: {
-  //     reelId: 3,
-  //     reelVideo: "",
-  //     likes: 1500,
-  //   },
-  // },
+  {
+    userId: 2,
+    post: {
+      postId: 3,
+      postImage: require("./assets/PostImages/amlan.jpg"),
+      likes: 340,
+      isLiked: false,
+      isBookmarked: false,
+    },
+    reel: {
+      reelId: 3,
+      reelVideo: require("./assets/Reels/shubham.mp4"),
+      likes: 1500,
+      isLiked: false,
+    },
+  },
   // {
   //   userId: 0,
   //   post: {

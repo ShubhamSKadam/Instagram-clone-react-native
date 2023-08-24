@@ -12,7 +12,7 @@ const ReelScreen = () => {
       {/* Header */}
       <View style={styles.headerContainer}>
         <Text style={styles.headerText}>Reels</Text>
-        <MaterialCommunityIcons name="camera-outline" size={34} color="black" />
+        <MaterialCommunityIcons name="camera-outline" size={34} color="white" />
       </View>
       {/* Reel Component comprising of the reel and it's information */}
       <Reel reelData={postData} />
@@ -25,6 +25,7 @@ export default ReelScreen;
 const styles = StyleSheet.create({
   mainContainer: {
     backgroundColor: "black",
+    flex: 1,
   },
   headerContainer: {
     flexDirection: "row",
@@ -35,6 +36,7 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: 20,
+    color: "white",
     fontFamily: "American Typewriter",
   },
 });

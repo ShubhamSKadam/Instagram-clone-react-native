@@ -10,6 +10,7 @@ export const postSlice = createSlice({
   name: "post",
   initialState,
   reducers: {
+    // Like the post
     setLiked: (state, action) => {
       const likedPostIndex = state.postData.findIndex(
         (item) => item.post.postId === action.payload
@@ -37,6 +38,21 @@ export const postSlice = createSlice({
       state.selectedPostInfo = state.postData.find(
         (item) => item.post.postId === postItem.post.postId
       );
+    },
+    // Like the reel
+    setLikedReel: (state, action) => {
+      const likedReelIndex = state.postData.findIndex(
+        (item) => item.reel.reelId === action.payload
+      );
+
+      const selectedReel = state.postData[likedReelIndex];
+      selectedReel.reel.isLiked = !selectedReel.reel.isLiked;
+
+      if (selectedReel.reel.isLiked) {
+        selectedReel.reel.likes++;
+      } else {
+        selectedReel.reel.likes--;
+      }
     },
   },
 });
