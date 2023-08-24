@@ -32,6 +32,6 @@ export default ProfilePostReels;
 const styles = StyleSheet.create({
   video: {
     height: 250,
-    width: 150,
+    width: 143,
   },
 });
