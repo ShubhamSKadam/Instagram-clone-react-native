@@ -1,11 +1,12 @@
 import {
   FlatList,
   StyleSheet,
-  Text,
   View,
   Image,
+  Text,
   TouchableOpacity,
 } from "react-native";
+import { Dimensions } from "react-native";
 import { useRef, useState } from "react";
 import { Video, ResizeMode } from "expo-av";
 import React from "react";
@@ -15,13 +16,17 @@ import { AntDesign } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { postSlice } from "../store/postSlice";
 
 const Reel = ({ reelData }) => {
-  const userData = useSelector((state) => state.users.dummyData);
   const dispatch = useDispatch();
 
+  const userData = useSelector((state) => state.users.dummyData);
+
   const video = useRef(null);
+
+  // Each reel render function
   function renderReelPost({ item }) {
     const postUserIndex = userData.findIndex((user) => user.id === item.userId);
     const postUser = userData[postUserIndex];
@@ -36,59 +41,76 @@ const Reel = ({ reelData }) => {
 
     return (
       <View style={styles.container}>
-        {/* Video Reel Header */}
-        <View style={styles.videoReelHeader}>
-          {/* icon and username */}
-          <View style={styles.iconUserContainer}>
-            <Image source={postUser.profileImage} style={styles.postUserIcon} />
-            <Text style={styles.postUserText}>{postUser.name}</Text>
+        <View style={styles.rightIconsContainer}>
+          <View style={styles.rightIconIndividualContainer}>
+            <TouchableOpacity onPress={likePressHandler}>
+              <MaterialCommunityIcons
+                name={item.reel.isLiked ? "cards-heart" : "cards-heart-outline"}
+                size={35}
+                color={item.reel.isLiked ? "#f01717" : "white"}
+              />
+            </TouchableOpacity>
+            <Text style={styles.textBold}>{item.reel.likes}</Text>
           </View>
 
-          {/* Nav ellipse */}
-          <View>
-            <Ionicons name="ellipsis-vertical" size={24} color="white" />
+          <View style={styles.rightIconIndividualContainer}>
+            <Feather
+              style={{ transform: [{ rotateY: "180deg" }] }}
+              name="message-circle"
+              size={30}
+              color={"white"}
+            />
+            <Text style={styles.textBold}>123</Text>
+          </View>
+
+          <View style={styles.rightIconIndividualContainer}>
+            <Feather name="send" size={30} color={"white"} />
+            <Text style={styles.textBold}>234k</Text>
+          </View>
+
+          <View style={styles.rightIconIndividualContainer}>
+            <TouchableOpacity onPress={reelBookMarkHandler}>
+              <MaterialCommunityIcons
+                name={item.reel.isBookmarked ? "bookmark" : "bookmark-outline"}
+                size={30}
+                color={"white"}
+              />
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.rightIconIndividualContainer}>
+            <Ionicons name="ellipsis-vertical" size={30} color={"white"} />
           </View>
         </View>
 
+        <View style={styles.leftIconContainer}>
+          <View style={styles.logoNameContainer}>
+            <View style={styles.postHeaderImageContainer}>
+              <Image
+                source={postUser.profileImage}
+                style={styles.postHeaderImage}
+              />
+            </View>
+            <Text style={styles.textBold}>{postUser.name}</Text>
+          </View>
+
+          <View style={{ marginLeft: 12 }}>
+            <Text style={styles.textNormal}>
+              Space Habitat in Future. #FutureSpaceHome
+            </Text>
+            <Text style={styles.textlight}>
+              #FutureSpaceHome #space #Bishop Ring
+            </Text>
+          </View>
+        </View>
         <Video
           ref={video}
           style={styles.video}
           source={item.reel.reelVideo}
-          useNativeControls
-          resizeMode={ResizeMode.CONTAIN}
+          useNativeControls={true}
+          resizeMode={ResizeMode.COVER}
           isLooping
         />
-        {/*footer of reel */}
-        <View style={styles.footerContainer}>
-          <View style={styles.footerIconContainer}>
-            {/* like, comment, send*/}
-            <View style={styles.reelShare}>
-              <TouchableOpacity onPress={likePressHandler}>
-                <AntDesign
-                  name={item.reel.isLiked ? "heart" : "hearto"}
-                  size={24}
-                  color={item.reel.isLiked ? "red" : "white"}
-                />
-              </TouchableOpacity>
-              <Feather name="message-circle" size={24} color="white" />
-              <FontAwesome5 name="telegram-plane" size={24} color="white" />
-            </View>
-
-            {/* Bookmark */}
-            <View>
-              <TouchableOpacity onPress={reelBookMarkHandler}>
-                <MaterialIcons
-                  name={
-                    item.reel.isBookmarked ? "bookmark" : "bookmark-outline"
-                  }
-                  size={28}
-                  color="white"
-                />
-              </TouchableOpacity>
-            </View>
-          </View>
-          <Text style={{ color: "white" }}>{item.reel.likes}</Text>
-        </View>
       </View>
     );
   }
@@ -101,46 +123,64 @@ const Reel = ({ reelData }) => {
 
 export default Reel;
 
+const { width } = Dimensions.get("window");
+const { height } = Dimensions.get("window");
+
 const styles = StyleSheet.create({
+  textBold: {
+    fontWeight: "bold",
+    color: "white",
+  },
+  textlight: {
+    fontWeight: "200",
+    color: "white",
+  },
+  textNormal: {
+    fontWeight: "500",
+    color: "white",
+  },
   video: {
     width: "100%",
-    height: 800,
+    height: "100%",
+    position: "absolute",
   },
   container: {
-    flex: 1,
+    height: height,
+    width: width,
+    position: "relative",
   },
-  postUserIcon: {
+  rightIconsContainer: {
+    position: "absolute",
+    height: 350,
+    bottom: 100,
+    right: 5,
+    justifyContent: "space-between",
+    alignItems: "center",
+    zIndex: 1,
+    padding: 10,
+  },
+  rightIconIndividualContainer: {
     height: 50,
-    width: 50,
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  leftIconContainer: {
+    position: "absolute",
+    height: 100,
+    width: 300,
+    bottom: 100,
+    left: 5,
+    zIndex: 1,
+  },
+  logoNameContainer: {
+    width: 200,
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 10,
+  },
+  postHeaderImage: {
+    height: 35,
+    width: 35,
     borderRadius: 50,
-  },
-  postUserText: {
-    color: "white",
-    fontSize: 16,
-    marginLeft: 8,
-  },
-  iconUserContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    paddingHorizontal: 18,
-    paddingTop: 18,
-  },
-  videoReelHeader: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-  reelShare: {
-    flexDirection: "row",
-    width: "20%",
-    justifyContent: "space-between",
-  },
-  footerIconContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  footerContainer: {
-    paddingHorizontal: 14,
   },
 });

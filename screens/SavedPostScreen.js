@@ -35,7 +35,7 @@ const SavedPostScreen = () => {
 
   return (
     <View style={styles.container}>
-      <ProfilePosts data={savedData}/>
+      <ProfilePosts data={savedData} />
       {/* <FlatList data={savedData} renderItem={renderSavedPost} numColumns={3} /> */}
     </View>
   );

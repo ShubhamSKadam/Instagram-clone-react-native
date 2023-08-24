@@ -8,15 +8,15 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 const ReelScreen = () => {
   const postData = useSelector((state) => state.posts.postData);
   return (
-    <SafeAreaView style={styles.mainContainer}>
+    <View style={styles.mainContainer}>
       {/* Header */}
-      <View style={styles.headerContainer}>
+      {/* <View style={styles.headerContainer}>
         <Text style={styles.headerText}>Reels</Text>
         <MaterialCommunityIcons name="camera-outline" size={34} color="white" />
-      </View>
+      </View> */}
       {/* Reel Component comprising of the reel and it's information */}
       <Reel reelData={postData} />
-    </SafeAreaView>
+    </View>
   );
 };
 
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingHorizontal: 18,
     alignItems: "center",
-    backgroundColor: "black",
+    backgroundColor: "red",
   },
   headerText: {
     fontSize: 20,
