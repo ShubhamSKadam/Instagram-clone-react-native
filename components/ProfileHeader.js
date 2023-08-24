@@ -14,7 +14,7 @@ const ProfileHeader = () => {
   const navigation = useNavigation();
   const [isModalVisible, setModalVisible] = useState(false);
   const [isHeaderModalVisible, setIsHeaderModalVisible] = useState(false);
-
+  
   function modalHandler() {
     setModalVisible(!isModalVisible);
   }

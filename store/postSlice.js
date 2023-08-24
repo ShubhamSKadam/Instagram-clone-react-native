@@ -33,9 +33,9 @@ export const postSlice = createSlice({
       selectedBookmark.post.isBookmarked = !selectedBookmark.post.isBookmarked;
     },
     setSelectedPostInfo: (state, action) => {
-      const item = action.payload;
+      const postItem = action.payload;
       state.selectedPostInfo = state.postData.find(
-        (item) => item.post.postId === item.post.postId
+        (item) => item.post.postId === postItem.post.postId
       );
     },
   },

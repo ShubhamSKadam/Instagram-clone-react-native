@@ -25,6 +25,10 @@ const Posts = ({ postData, postId }) => {
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.users.dummyData);
 
+  const ellipsePostBookmark = useSelector(
+    (state) => state.posts.selectedPostInfo
+  );
+
   const [isModalVisible, setModalVisible] = useState(false);
 
   // scroll to my postId if I tap a post from my profile and saved
@@ -151,7 +155,15 @@ const Posts = ({ postData, postId }) => {
       {/* Modal on Tapping the Nav bar of each post */}
       <BottomModal isModalVisible={isModalVisible} modalHandler={modalHandler}>
         <View style={styles.modalTopContainer}>
-          <MaterialIcons name={"bookmark"} size={32} color="black" />
+          <MaterialIcons
+            name={
+              ellipsePostBookmark?.post?.isBookmarked
+                ? "bookmark"
+                : "bookmark-outline"
+            }
+            size={32}
+            color="black"
+          />
           <AntDesign name="qrcode" size={32} color="black" />
         </View>
 
