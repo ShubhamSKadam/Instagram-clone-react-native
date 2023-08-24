@@ -1,6 +1,7 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Octicons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import ProfilePostImages from "./ProfilePostImages";
 import ProfilePostReels from "./ProfilePostReels";
@@ -40,11 +41,7 @@ const ProfilePosts = () => {
                 : styles.iconContainerInactive
             }
           >
-            <MaterialCommunityIcons
-              name="contacts-outline"
-              size={30}
-              color="black"
-            />
+            <Octicons name="video" size={30} color="black" />
           </View>
         </TouchableOpacity>
       </View>
