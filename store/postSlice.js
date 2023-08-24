@@ -54,5 +54,15 @@ export const postSlice = createSlice({
         selectedReel.reel.likes--;
       }
     },
+    // Save the reel
+    saveBookmarkReel: (state, action) => {
+      const savedReelIndex = state.postData.findIndex(
+        (item) => item.reel.reelId === action.payload
+      );
+
+      const selectedReelBookmark = state.postData[savedReelIndex];
+      selectedReelBookmark.reel.isBookmarked =
+        !selectedReelBookmark.reel.isBookmarked;
+    },
   },
 });

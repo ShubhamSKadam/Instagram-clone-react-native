@@ -30,6 +30,10 @@ const Reel = ({ reelData }) => {
       dispatch(postSlice.actions.setLikedReel(item.reel.reelId));
     }
 
+    function reelBookMarkHandler() {
+      dispatch(postSlice.actions.saveBookmarkReel(item.reel.reelId));
+    }
+
     return (
       <View style={styles.container}>
         {/* Video Reel Header */}
@@ -72,7 +76,15 @@ const Reel = ({ reelData }) => {
 
             {/* Bookmark */}
             <View>
-              <MaterialIcons name="bookmark-outline" size={28} color="white" />
+              <TouchableOpacity onPress={reelBookMarkHandler}>
+                <MaterialIcons
+                  name={
+                    item.reel.isBookmarked ? "bookmark" : "bookmark-outline"
+                  }
+                  size={28}
+                  color="white"
+                />
+              </TouchableOpacity>
             </View>
           </View>
           <Text style={{ color: "white" }}>{item.reel.likes}</Text>
