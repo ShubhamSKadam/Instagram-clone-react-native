@@ -16,7 +16,7 @@ export const postData = [
     },
   },
   {
-    userId: 1,
+    userId: 0,
     post: {
       postId: 2,
       postImage: require("./assets/PostImages/aditya.jpg"),
