@@ -19,6 +19,7 @@ import { usersSlice } from "../store/usersSlice";
 import { postSlice } from "../store/postSlice";
 import Modal from "react-native-modal";
 import { useState, useRef } from "react";
+import BottomModal from "./BottomModal";
 
 const Posts = ({ postData, postId }) => {
   const dispatch = useDispatch();
@@ -148,52 +149,46 @@ const Posts = ({ postData, postId }) => {
         showsVerticalScrollIndicator={false}
       />
       {/* Modal on Tapping the Nav bar of each post */}
-      <Modal
-        isVisible={isModalVisible}
-        onBackdropPress={() => setModalVisible(false)}
-        style={styles.modal}
-      >
-        <View style={styles.modalContainer}>
-          <View style={styles.modalTopContainer}>
-            <MaterialIcons name={"bookmark"} size={32} color="black" />
-            <AntDesign name="qrcode" size={32} color="black" />
+      <BottomModal isModalVisible={isModalVisible} modalHandler={modalHandler}>
+        <View style={styles.modalTopContainer}>
+          <MaterialIcons name={"bookmark"} size={32} color="black" />
+          <AntDesign name="qrcode" size={32} color="black" />
+        </View>
+
+        <View style={styles.modalListContainer}>
+          <View style={styles.modalListItem}>
+            <AntDesign name="staro" size={24} color="black" />
+            <Text style={styles.modalListItemText}>Add to favorites</Text>
+          </View>
+          <View style={styles.modalListItem}>
+            <Ionicons name="person-remove-outline" size={24} color="black" />
+            <Text style={styles.modalListItemText}>Unfollow</Text>
           </View>
 
-          <View style={styles.modalListContainer}>
-            <View style={styles.modalListItem}>
-              <AntDesign name="staro" size={24} color="black" />
-              <Text style={styles.modalListItemText}>Add to favorites</Text>
-            </View>
-            <View style={styles.modalListItem}>
-              <Ionicons name="person-remove-outline" size={24} color="black" />
-              <Text style={styles.modalListItemText}>Unfollow</Text>
-            </View>
-
-            <View style={styles.modalListItem}>
-              <Ionicons
-                name="information-circle-outline"
-                size={24}
-                color="black"
-              />
-              <Text style={styles.modalListItemText}>
-                Why you're seeing this post
-              </Text>
-            </View>
-            <View style={styles.modalListItem}>
-              <Feather name="eye-off" size={24} color="black" />
-              <Text style={styles.modalListItemText}>Hide</Text>
-            </View>
-            <View style={styles.modalListItem}>
-              <FontAwesome name="user-o" size={24} color="black" />
-              <Text style={styles.modalListItemText}>About this account</Text>
-            </View>
-            <View style={styles.modalListItem}>
-              <Octicons name="report" size={24} color="red" />
-              <Text style={styles.modalListItemText}>Report</Text>
-            </View>
+          <View style={styles.modalListItem}>
+            <Ionicons
+              name="information-circle-outline"
+              size={24}
+              color="black"
+            />
+            <Text style={styles.modalListItemText}>
+              Why you're seeing this post
+            </Text>
+          </View>
+          <View style={styles.modalListItem}>
+            <Feather name="eye-off" size={24} color="black" />
+            <Text style={styles.modalListItemText}>Hide</Text>
+          </View>
+          <View style={styles.modalListItem}>
+            <FontAwesome name="user-o" size={24} color="black" />
+            <Text style={styles.modalListItemText}>About this account</Text>
+          </View>
+          <View style={styles.modalListItem}>
+            <Octicons name="report" size={24} color="red" />
+            <Text style={styles.modalListItemText}>Report</Text>
           </View>
         </View>
-      </Modal>
+      </BottomModal>
     </View>
   );
 };
@@ -262,18 +257,6 @@ const styles = StyleSheet.create({
     transform: [{ rotateY: "180deg" }],
   },
   // Modal styling
-  modal: {
-    justifyContent: "flex-end",
-    margin: 0,
-  },
-  modalContainer: {
-    backgroundColor: "white",
-    paddingHorizontal: 18,
-    paddingVertical: 18,
-    paddingTop: 45,
-    borderTopLeftRadius: 14,
-    borderTopRightRadius: 14,
-  },
   modalTopContainer: {
     flexDirection: "row",
     justifyContent: "space-around",

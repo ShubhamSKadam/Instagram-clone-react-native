@@ -8,6 +8,7 @@ import { Fontisto } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import BottomModal from "./BottomModal";
 
 const ProfileHeader = () => {
   const navigation = useNavigation();
@@ -45,42 +46,37 @@ const ProfileHeader = () => {
       </View>
 
       {/* Modal Component for userName */}
-      <Modal
-        isVisible={isModalVisible}
-        testID={"modal"}
-        onBackdropPress={() => setModalVisible(false)}
-        style={styles.modal}
-      >
-        <View style={styles.modalMainContainer}>
-          <View style={styles.modalUser}>
-            <Image
-              source={require("../assets/ProfileImages/shubham.png")}
-              style={styles.modalProfileImage}
-            />
-            <Text>ssk.exe</Text>
-          </View>
-
-          {/* Active account */}
-          <Fontisto name="radio-btn-active" size={24} color="#63bbdd" />
-        </View>
-
-        {/* Add Account */}
-        <View style={styles.addAccount}>
-          <View style={styles.addHighlightContainer}>
-            <View style={styles.addHighlight}>
-              <Ionicons name="add" size={32} color="black" />
+      <BottomModal isModalVisible={isModalVisible} modalHandler={modalHandler}>
+        <View style={styles.userNameModalContainer}>
+          <View style={styles.modalUserContainer}>
+            <View style={styles.modalUser}>
+              <Image
+                source={require("../assets/ProfileImages/shubham.png")}
+                style={styles.modalProfileImage}
+              />
+              <Text>ssk.exe</Text>
             </View>
+
+            {/* Active account */}
+            <Fontisto name="radio-btn-active" size={24} color="#63bbdd" />
           </View>
-          <Text>Add account</Text>
+
+          {/* Add Account */}
+          <View style={styles.addAccount}>
+            <View style={styles.addHighlightContainer}>
+              <View style={styles.addHighlight}>
+                <Ionicons name="add" size={32} color="black" />
+              </View>
+            </View>
+            <Text>Add account</Text>
+          </View>
         </View>
-      </Modal>
+      </BottomModal>
 
       {/* Nav Header Modal */}
-      <Modal
-        isVisible={isHeaderModalVisible}
-        testID={"modal"}
-        onBackdropPress={() => setIsHeaderModalVisible(false)}
-        style={styles.modal}
+      <BottomModal
+        isModalVisible={isHeaderModalVisible}
+        modalHandler={headerModalhandler}
       >
         <View style={styles.navHeaderModalContainer}>
           <View style={styles.navHeaderModalItem}>
@@ -131,7 +127,7 @@ const ProfileHeader = () => {
             <Text style={styles.navModalText}>Favorites</Text>
           </View>
         </View>
-      </Modal>
+      </BottomModal>
     </View>
   );
 };
@@ -159,10 +155,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "500",
   },
-  modal: {
-    justifyContent: "flex-end",
-    margin: 0,
-  },
+  // Modal Add Username styling
   modalProfileImage: {
     height: 60,
     width: 60,
@@ -173,16 +166,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
-  modalMainContainer: {
-    backgroundColor: "white",
+  modalUserContainer: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingHorizontal: 18,
-    paddingVertical: 18,
-    paddingTop: 45,
-    borderTopLeftRadius: 14,
-    borderTopRightRadius: 14,
   },
   addHighlight: {
     borderWidth: 1,
@@ -199,26 +186,22 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     flexDirection: "row",
     alignItems: "center",
-    paddingHorizontal: 18,
-    paddingBottom: 22,
+    paddingVertical: 18,
   },
   // nav header modal stylings
   navHeaderModalContainer: {
     flexDirection: "column",
-    backgroundColor: "white",
-    paddingVertical: 14,
-    paddingHorizontal: 8,
     borderTopLeftRadius: 14,
     borderTopRightRadius: 14,
   },
   navHeaderModalItem: {
     flexDirection: "row",
     alignItems: "center",
-    paddingVertical: 14,
+    paddingVertical: 12,
     paddingHorizontal: 18,
   },
   navModalText: {
-    fontSize: 16,
+    fontSize: 18,
     paddingLeft: 14,
   },
 });
