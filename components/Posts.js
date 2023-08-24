@@ -46,9 +46,9 @@ const Posts = ({ postData, postId }) => {
     setModalVisible(!isModalVisible);
   }
 
-  function saveBookMarkHandlerEllipse() {
-    dispatch(postSlice.actions.saveBookmark(ellipsePostBookmark.post.postId));
-  }
+  // function saveBookMarkHandlerEllipse() {
+  //   dispatch(postSlice.actions.saveBookmark(ellipsePostBookmark.post.postId));
+  // }
 
   // render function for flatlist
   function renderPost({ item }) {
@@ -159,7 +159,7 @@ const Posts = ({ postData, postId }) => {
       {/* Modal on Tapping the Nav bar of each post */}
       <BottomModal isModalVisible={isModalVisible} modalHandler={modalHandler}>
         <View style={styles.modalTopContainer}>
-          <TouchableOpacity onPress={saveBookMarkHandlerEllipse}>
+          <TouchableOpacity>
             <MaterialIcons
               name={
                 ellipsePostBookmark?.post?.isBookmarked
