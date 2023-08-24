@@ -239,7 +239,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   postImage: {
-    height: 500,
+    height: 450,
     width: "auto",
   },
   postImageContainer: {
