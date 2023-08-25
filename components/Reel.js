@@ -5,6 +5,7 @@ import {
   Image,
   Text,
   TouchableOpacity,
+  TouchableWithoutFeedback,
 } from "react-native";
 import { Dimensions } from "react-native";
 import { useRef, useState } from "react";
@@ -25,6 +26,19 @@ const Reel = ({ reelData }) => {
   const userData = useSelector((state) => state.users.dummyData);
 
   const video = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const togglePlayPause = async () => {
+    if (!video.current) return;
+
+    if (isPlaying) {
+      await video.current.pauseAsync();
+    } else {
+      await video.current.playAsync();
+    }
+
+    setIsPlaying(!isPlaying);
+  };
 
   // Each reel render function
   function renderReelPost({ item }) {
@@ -103,14 +117,18 @@ const Reel = ({ reelData }) => {
             </Text>
           </View>
         </View>
-        <Video
-          ref={video}
-          style={styles.video}
-          source={item.reel.reelVideo}
-          useNativeControls={true}
-          resizeMode={ResizeMode.COVER}
-          isLooping
-        />
+        <TouchableWithoutFeedback onPress={togglePlayPause}>
+          <Video
+            ref={video}
+            rate={1.0}
+            isMuted={false}
+            style={styles.video}
+            source={item.reel.reelVideo}
+            resizeMode={ResizeMode.COVER}
+            shouldPlay={true}
+            isLooping
+          />
+        </TouchableWithoutFeedback>
       </View>
     );
   }

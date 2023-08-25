@@ -1,4 +1,4 @@
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { Platform, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { useRef } from "react";
 import Header from "../components/Header";
@@ -15,7 +15,12 @@ const HomeScreen = () => {
   };
 
   return (
-    <SafeAreaView style={styles.rootContainer}>
+    <SafeAreaView
+      style={[
+        styles.rootContainer,
+        Platform.OS === "android" && styles.androidMargin,
+      ]}
+    >
       <Header />
       <Stories />
       <HorizontalLine />
@@ -34,5 +39,8 @@ const styles = StyleSheet.create({
   },
   rootContainer: {
     flex: 1,
+  },
+  androidMargin: {
+    marginTop: 22,
   },
 });
