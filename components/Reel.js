@@ -61,10 +61,10 @@ const Reel = ({ reelData }) => {
               <MaterialCommunityIcons
                 name={item.reel.isLiked ? "cards-heart" : "cards-heart-outline"}
                 size={35}
-                color={item.reel.isLiked ? "#f01717" : "white"}
+                color={item.reel.isLiked ? "#f01717" : "#dbdbdb"}
               />
             </TouchableOpacity>
-            <Text style={styles.textBold}>{item.reel.likes}</Text>
+            <Text style={styles.textlight}>{item.reel.likes}</Text>
           </View>
 
           <View style={styles.rightIconIndividualContainer}>
@@ -72,14 +72,14 @@ const Reel = ({ reelData }) => {
               style={{ transform: [{ rotateY: "180deg" }] }}
               name="message-circle"
               size={30}
-              color={"white"}
+              color={"#dbdbdb"}
             />
-            <Text style={styles.textBold}>123</Text>
+            <Text style={styles.textlight}>123</Text>
           </View>
 
           <View style={styles.rightIconIndividualContainer}>
-            <Feather name="send" size={30} color={"white"} />
-            <Text style={styles.textBold}>234k</Text>
+            <Feather name="send" size={30} color={"#dbdbdb"} />
+            <Text style={styles.textlight}>234k</Text>
           </View>
 
           <View style={styles.rightIconIndividualContainer}>
@@ -87,13 +87,13 @@ const Reel = ({ reelData }) => {
               <MaterialCommunityIcons
                 name={item.reel.isBookmarked ? "bookmark" : "bookmark-outline"}
                 size={30}
-                color={"white"}
+                color={"#dbdbdb"}
               />
             </TouchableOpacity>
           </View>
 
           <View style={styles.rightIconIndividualContainer}>
-            <Ionicons name="ellipsis-vertical" size={30} color={"white"} />
+            <Ionicons name="ellipsis-vertical" size={30} color={"#dbdbdb"} />
           </View>
         </View>
 
@@ -134,6 +134,10 @@ const Reel = ({ reelData }) => {
   }
   return (
     <View style={styles.listContainer}>
+      <View style={styles.headerContainer}>
+        <Text style={styles.headerText}>Reels</Text>
+        <MaterialCommunityIcons name="camera-outline" size={34} color="white" />
+      </View>
       <FlatList data={reelData} renderItem={renderReelPost} />
     </View>
   );
@@ -145,6 +149,9 @@ const { width } = Dimensions.get("window");
 const { height } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
+  listContainer: {
+    flex: 1,
+  },
   textBold: {
     fontWeight: "bold",
     color: "white",
@@ -191,14 +198,30 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   logoNameContainer: {
-    width: 200,
+    width: 110,
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "space-around",
     marginBottom: 10,
   },
   postHeaderImage: {
     height: 35,
     width: 35,
     borderRadius: 50,
+  },
+  headerContainer: {
+    position: "absolute",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingHorizontal: 18,
+    zIndex: 1,
+    top: 48,
+    width: "100%",
+    alignItems: "center",
+  },
+  headerText: {
+    fontSize: 20,
+    color: "white",
+    fontFamily: "American Typewriter",
   },
 });

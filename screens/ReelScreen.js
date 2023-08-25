@@ -26,17 +26,5 @@ const styles = StyleSheet.create({
   mainContainer: {
     backgroundColor: "black",
     flex: 1,
-  },
-  headerContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    paddingHorizontal: 18,
-    alignItems: "center",
-    backgroundColor: "red",
-  },
-  headerText: {
-    fontSize: 20,
-    color: "white",
-    fontFamily: "American Typewriter",
-  },
+  }
 });

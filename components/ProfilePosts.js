@@ -42,7 +42,11 @@ const ProfilePosts = ({ data }) => {
                 : styles.iconContainerInactive
             }
           >
-            <Octicons name="video" size={30} color="black" />
+            <MaterialCommunityIcons
+              name="play-box-outline"
+              size={30}
+              color="black"
+            />
           </View>
         </TouchableOpacity>
       </View>
