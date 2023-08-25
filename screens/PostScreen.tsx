@@ -25,10 +25,18 @@ const PostScreen = () => {
 
   return (
     <View style={styles.container}>
-      {image && <Image source={{ uri: image }} style={styles.image} />}
-      <TouchableOpacity onPress={openCamera}>
-        <Text>CAMERA ROLL</Text>
-      </TouchableOpacity>
+      <View style={styles.imageContainer}>
+        {image && <Image source={{ uri: image }} style={styles.image} />}
+      </View>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity onPress={openCamera} style={styles.button}>
+          <Text style={styles.text}>Open Camera Roll</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.text}>Open from Gallery</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -40,9 +48,28 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    paddingHorizontal: 18,
   },
   image: {
-    width: 200,
-    height: 200,
+    width: "100%",
+    height: 300,
+    borderRadius: 10,
+  },
+  imageContainer: {
+    width: "100%",
+  },
+  buttonContainer: {
+    paddingVertical: 8,
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-around",
+  },
+  button: {
+    backgroundColor: "#2a2a2a",
+    borderRadius: 10,
+    padding: 18,
+  },
+  text: {
+    color: "white",
   },
 });
