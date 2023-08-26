@@ -250,6 +250,7 @@ const styles = StyleSheet.create({
   postUserText: {
     marginLeft: 8,
     fontSize: 14,
+    fontFamily: "Muli-SemiBold",
   },
   postImage: {
     height: 450,

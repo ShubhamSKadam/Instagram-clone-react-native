@@ -17,10 +17,30 @@ import { Provider } from "react-redux";
 import { store } from "./store";
 import SavedPostScreen from "./screens/SavedPostScreen";
 import MyPostsScreen from "./screens/MyPostsScreen";
+import * as Font from "expo-font";
+import { useFonts } from "expo-font";
+import { useCallback } from "react";
+import * as SplashScreen from "expo-splash-screen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    "Muli-Light": require("./assets/fonts/Muli-Light.ttf"),
+    "Muli-Regular": require("./assets/fonts/Muli-Regular.ttf"),
+    "Muli-SemiBold": require("./assets/fonts/Muli-SemiBold.ttf"),
+  });
+
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   function BottomTabScreens() {
     return (
       <Tab.Navigator

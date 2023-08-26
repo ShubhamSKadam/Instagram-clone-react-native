@@ -9,6 +9,7 @@ import {
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { usersSlice } from "../store/usersSlice";
+import * as Font from "expo-font";
 
 const Stories = () => {
   const dispatch = useDispatch();
@@ -67,6 +68,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
     fontWeight: "300",
     fontSize: 12,
+    fontFamily: "Muli-Regular",
   },
   tappedImg: {
     padding: 2,

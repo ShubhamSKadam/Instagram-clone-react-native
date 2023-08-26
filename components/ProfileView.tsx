@@ -162,5 +162,6 @@ const styles = StyleSheet.create({
   aboutText: {
     fontSize: 15,
     marginVertical: 1,
+    fontFamily: "Muli-SemiBold",
   },
 });
